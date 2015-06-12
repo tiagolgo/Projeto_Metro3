@@ -5,19 +5,17 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
-import Dao.especificos.DaoUsuario;
+import br.com.utfpr.ajudanovatos.dao.DaoUsuario;
 import br.com.caelum.vraptor.Controller;
-import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.SimpleMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
-import br.com.utfpr.ajudanovatos.entidade.usuario.Usuario;
-import br.com.utfpr.ajudanovatos.entidade.usuario.UsuarioLogado;
-import br.com.utfpr.ajudanovatos.utils.EncriptacaoPassword;
+import br.com.utfpr.ajudanovatos.entidades.usuario.Usuario;
+import br.com.utfpr.ajudanovatos.utils.usuario.UsuarioLogado;
+import br.com.utfpr.ajudanovatos.utils.encriptacao.EncriptacaoPassword;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -40,20 +38,19 @@ public class LoginController {
     @Inject
     private EncriptacaoPassword encript;
 
-    /*  @Post("/login")
-     public void login(String login, String senha) {
-     this.validator.addIf(login == null || senha == null, new SimpleMessage("login", "Login ou Senha invalidos"));
-     this.validator.onErrorForwardTo(UsuarioController.class).login();
-     Usuario user = du.usuarioAutenticado(login, this.encript.encripta(senha));
-     this.validator.addIf(user == null, new SimpleMessage("user-login", "Usuário não encontrado"));
-     this.validator.onErrorForwardTo(UsuarioController.class).login();
-     if (user != null) {
-     this.ul.setLogado(true);
-     this.ul.setNome(user.getNome());
-     this.ul.setId(user.getId());
-     }
-     this.result.forwardTo(IndexController.class).index();
-     }*/
+    @Path("/acessar")
+    public void acessar(String login, String senha){
+        Usuario user = du.usuarioAutenticado(login, this.encript.encripta(senha));
+        this.validator.addIf(user==null, new SimpleMessage("user-login", "Usuário não encontrado"));
+        this.validator.onErrorForwardTo(UsuarioController.class).login();
+        if (user!=null) {
+            this.ul.setLogado(true);
+            this.ul.setNome(user.getNome());
+            this.ul.setId(user.getId());
+        }
+        this.result.forwardTo(IndexController.class).index();
+    }
+
     @Post("/login")
     public void login(String login, String senha){
         List<Object> r = new ArrayList<>();

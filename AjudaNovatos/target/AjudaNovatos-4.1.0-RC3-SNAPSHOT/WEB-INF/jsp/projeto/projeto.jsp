@@ -42,18 +42,18 @@
             <c:import url="../componentes/internacionalizacao.jsp"/>
 
             <div style="margin-top: 2%;margin-bottom: 2%; padding: 5px;">
-                <h1 class="text-bold"><img src="<c:url value="/images/logo/"/>${projeto.logotipo}" width="70px"/> <c:out value="${projeto.nome}"/></h1>
+                <h1 class="text-bold"><img src=${projeto.medium_logo_url} width="70px"/> <c:out value="${projeto.name}"/></h1>
                 <div class="fb-like place-right" data-href="https://developers.facebook.com/docs/plugins/" data-width="600" data-layout="button" data-action="like" data-show-faces="true" data-share="true"></div>
             </div>
             <div class="tabcontrol" data-role="tabControl">
                 <ul class="tabs">
-                    <li class="active" class="bg-hover-lightBlue"><a href="#tab_1" id="tab1">${t["tab.sobre"]}</a></li>
-                    <li><a href="#tab_2" id="tab2" class="bg-hover-lightBlue">${t["tab.requisitos"]}</a></li>
-                    <li><a href="#tab_3" id="tab3" class="bg-hover-lightBlue">${t["tab.comoiniciar"]}</a></li>
-                    <li><a href="#tab_5" id="tab4" class="bg-hover-lightBlue">${t["tab.contato"]}</a></li>
-                    <li><a href="#tab_4" id="tab5" class="bg-hover-lightBlue">${t["tab.workspace"]}</a></li>
-                    <li><a href="#tab_6" id="tab6" class="bg-hover-lightBlue">${t["tab.entender"]}</a></li>
-                    <li><a href="#tab_7" id="tab7" class="bg-hover-lightBlue">${t["tab.contribuicao"]}</a></li>
+                    <li class="active"><a href="#tab_1" id="tab1">${t["tab.sobre"]}</a></li>
+                    <li><a href="#tab_2" id="tab2">${t["tab.requisitos"]}</a></li>
+                    <li><a href="#tab_3" id="tab3">${t["tab.comoiniciar"]}</a></li>
+                    <li><a href="#tab_5" id="tab4">${t["tab.contato"]}</a></li>
+                    <li><a href="#tab_4" id="tab5">${t["tab.workspace"]}</a></li>
+                    <li><a href="#tab_6" id="tab6">${t["tab.entender"]}</a></li>
+                    <li><a href="#tab_7" id="tab7">${t["tab.contribuicao"]}</a></li>
                 </ul>
 
                 <div class="frames" >
@@ -124,5 +124,7 @@
                 $(".rating").rating();
             });
         </script>
+        <script src="/AjudaNovatos/js/projeto-form.js"></script>
+
     </body>
 </html>

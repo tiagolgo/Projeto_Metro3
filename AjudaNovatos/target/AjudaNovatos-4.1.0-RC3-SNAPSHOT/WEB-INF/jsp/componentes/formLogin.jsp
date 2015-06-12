@@ -1,12 +1,5 @@
-<%-- 
-    Document   : formLogin
-    Created on : 30/05/2015, 20:23:48
-    Author     : Tiago Luiz Gomes
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
-
 <form class='form-autenticacao' method="post" data-role="validator" data-hint-mode="line" >
     <h3 class="text-light">Login to service</h3>
     <div class="input-control text-italic fg-red msg-erros" style="display: none">
@@ -23,7 +16,6 @@
         <span class="input-state-error mif-warning"></span>
         <span class="input-state-success mif-checkmark"></span>
     </div>
-
     <div class="input-control text full-size" style="font-size: 14px; margin-top: 15px">
         <span class="mif-lock prepend-icon "></span>
         <input type="password"

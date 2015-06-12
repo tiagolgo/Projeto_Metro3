@@ -14,32 +14,32 @@
         <property name="hibernate.format_sql">true</property>
         <property name="hibernate.transaction.auto_close_session">false</property>
         
-                                  
-        <mapping class="br.com.utfpr.ajudanovatos.entidade.usuario.Senha" />
-        <mapping class="br.com.utfpr.ajudanovatos.entidade.usuario.Usuario" />
-        
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.Projeto" />
-        
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.comentario.Comentario" />
-        
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.infos.Linguagem" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.infos.Plataforma" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.infos.Repositorio" />
-        
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Como_Iniciar" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Comunicacao" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Configurar_Workspace" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Entendendo_Codigo" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Requisito" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.Submeter_Mudanca" />
-        
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Chat_Irc" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Encontrar_Mentor" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Fluxo_Contribuicao" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Lista_Discussao" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Pesquisar_Antes" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Tarefa_Facil" />
-        <mapping class="br.com.utfpr.ajudanovatos.projeto.opcoes.objetos.Feed" />
-       
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.usuario.Senha" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.usuario.Usuario" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Projeto" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Comentario" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Linguagem" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Plataforma" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Repositorio" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Como_Iniciar" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Comunicacao" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Configurar_Workspace" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Entendendo_Codigo" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Requisito" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Submeter_Mudanca" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Chat_Irc" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Encontrar_Mentor" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Fluxo_Contribuicao" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Lista_Discussao" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Pesquisar_Antes" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Tarefa_Facil" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Feed" />
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Analise"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.AtividadeMensal"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Contribuinte"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.EstatisticasOpenHub"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Licenca"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Link"/>
+        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.NivelAtividade"/>
     </session-factory>
 </hibernate-configuration>

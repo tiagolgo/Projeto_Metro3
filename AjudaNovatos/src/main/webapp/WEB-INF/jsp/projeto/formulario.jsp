@@ -42,7 +42,6 @@
 
             <form id="dados-form" method="POST" action="<c:url value="${t['url.salvar.projeto']}"/>" enctype="multipart/form-data" style='margin-top: 2%'>
                 <input type="hidden" name="projeto.id" value="${projeto.id}"/>
-
                 <div class="tabcontrol" data-role="tabControl">
                     <ul class="tabs">
                         <li class="active"><a href="#tab_1">Dados</a></li>
@@ -87,7 +86,6 @@
                 </div>              
             </form>
         </div>
-
         <script>
             tinymce.init({
                 selector: ".tiny",

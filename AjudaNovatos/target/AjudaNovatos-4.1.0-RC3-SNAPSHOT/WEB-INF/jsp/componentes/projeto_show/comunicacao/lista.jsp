@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <h4 class="fg-darkBlue">${t["tab.lista.titulo1"]} <span class="fg-green rating_nota place-right"></span></h4>
-<p>Link: <a href="<c:out value="{projeto.comunicacao.lista.link}"/>" target="_blank">{projeto.comunicacao.lista.link}</a></p>
+<p>Link: <a href="#" target="_blank">link lista</a></p>
 <h4 class="fg-darkBlue">${t["tab.lista.titulo2"]}</h4>
 <p>
     ${projeto.comunicacao.lista.subscricao}

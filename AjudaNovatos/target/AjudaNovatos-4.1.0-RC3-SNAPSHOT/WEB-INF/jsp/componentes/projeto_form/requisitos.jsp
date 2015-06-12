@@ -1,13 +1,6 @@
-<%-- 
-    Document   : novo
-    Created on : 15/11/2014, 20:02:39
-    Author     : Tiago Luiz Gomes
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page errorPage="../erros/404.jsp" %>
-
 <input type="hidden" name="projeto.requisito.id" value="${projeto.requisito.id}"/>
 <p>
     Aqui você deve fornecer ao usuário informações sobre os requisitos necessários para que o novato tenha

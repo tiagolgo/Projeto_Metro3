@@ -102,8 +102,8 @@ function removeObjetos(objeto, urlAction) {
 // BUSCA NO GOOGLE
 $(".google-search").on("submit", function (event) {
     event.preventDefault();
-    var dominio = "http://mail.kde.org/pipermail/amarok-devel/";
-    var site = "http://mail.kde.org/pipermail/amarok-devel/";
+    var dominio = $(this).find("#url").val();
+    var site = $(this).find("#url").val();
     var texto = $(this).find("input").val();
     if (texto.length > 0) {
         window.open("https://www.google.com.br/?gws_rd=ssl#q=" + texto + "&domains=" + dominio + "&sitesearch=" + site);

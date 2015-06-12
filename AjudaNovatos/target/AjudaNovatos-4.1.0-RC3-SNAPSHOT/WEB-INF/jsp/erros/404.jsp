@@ -4,7 +4,7 @@
     Author     : Tiago Luiz Gomes
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page isErrorPage="true" import="java.io.*" contentType="text/plain"%>
 <!DOCTYPE html>
 <html>
     <head>

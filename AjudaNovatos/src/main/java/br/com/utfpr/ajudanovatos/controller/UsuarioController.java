@@ -5,7 +5,7 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
-import Dao.especificos.DaoUsuario;
+import br.com.utfpr.ajudanovatos.dao.DaoUsuario;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Delete;
 import br.com.caelum.vraptor.Get;
@@ -14,9 +14,9 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.caelum.vraptor.view.Results;
-import br.com.utfpr.ajudanovatos.entidade.usuario.Usuario;
-import br.com.utfpr.ajudanovatos.entidade.usuario.UsuarioLogado;
-import br.com.utfpr.ajudanovatos.utils.EncriptacaoPassword;
+import br.com.utfpr.ajudanovatos.entidades.usuario.Usuario;
+import br.com.utfpr.ajudanovatos.utils.usuario.UsuarioLogado;
+import br.com.utfpr.ajudanovatos.utils.encriptacao.EncriptacaoPassword;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.HibernateException;
@@ -57,14 +57,12 @@ public class UsuarioController {
             if (this.userLogado.getId()>0) {
                 usuario.setId(this.userLogado.getId());
             }
-            /*    
-             String email = usuario.getEmail();
-             String senhaTexto = usuario.getPassword().getSenha();
-             */
+            String email = usuario.getEmail();
+            String senhaTexto = usuario.getPassword().getSenha();
             String senha = this.encriptacao.encripta(usuario.getPassword().getSenha());
             usuario.getPassword().setSenha(senha);
             this.dao.persiste(usuario);
-            this.result.forwardTo(IndexController.class).index();
+            this.result.forwardTo(LoginController.class).acessar(email, senhaTexto);
         } catch (HibernateException e) {
             e.printStackTrace();
             this.result.of(this).formulario();

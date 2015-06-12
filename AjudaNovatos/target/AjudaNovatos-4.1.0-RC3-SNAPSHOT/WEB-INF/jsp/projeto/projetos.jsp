@@ -68,7 +68,6 @@
                     <tr>
                         <th style="display: none"></th>
                         <th><span>${t["projetos.tab.col0"]}</span></th>
-                        <th><span>${t["projetos.tab.col1"]}</span></th>
                         <th><span>${t["projetos.tab.col2"]}</span></th>
                         <th><span>${t["projetos.tab.col3"]}</span></th>
                     </tr>
@@ -77,10 +76,9 @@
                     <c:forEach var="projeto" items="${projetos}">
                         <tr> 
                             <td style="display: none" class="id">${projeto.id}</td>
-                            <td>${projeto.nome}4</td>
-                            <td>${projeto.plataformas.toString().replace('[','').replace(']','')}54</td>
-                            <td>${projeto.linguagens.toString().replace('[','').replace(']','')}54</td>
-                            <td>${projeto.dataCriacao}54</td>
+                            <td>${projeto.name}</td>
+                            <td>${projeto.linguagens.toString().replace('[','').replace(']','')}</td>
+                            <td>${projeto.created_at}</td>
                         </tr> 
                     </c:forEach>
                 </tbody>

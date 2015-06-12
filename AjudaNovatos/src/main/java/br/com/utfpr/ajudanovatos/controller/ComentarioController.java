@@ -5,7 +5,7 @@
  */
 package br.com.utfpr.ajudanovatos.controller;
 
-import Dao.especificos.DaoComentario;
+import br.com.utfpr.ajudanovatos.dao.DaoComentario;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Result;

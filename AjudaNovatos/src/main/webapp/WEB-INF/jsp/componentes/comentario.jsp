@@ -1,11 +1,4 @@
-<%-- 
-    Document   : comentario
-    Created on : 01/06/2015, 08:56:33
-    Author     : Tiago Luiz Gomes
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <h3>Novo comentário</h3>
 <span>Avaliação</span>
 <div class="rating full-size" data-role='rating' data-show-score='false' id='comentario-nota'></div>

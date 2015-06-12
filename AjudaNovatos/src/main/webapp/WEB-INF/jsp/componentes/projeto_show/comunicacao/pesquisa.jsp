@@ -18,11 +18,11 @@
             <p>Buscar uma solução no Google.</p>
             <form class="google-search">
                 <div class="input-control text full-size">
+                    <input type="hidden" id="url" value=""/>
                     <input type="text" placeholder="Buscar no Google"/>
                     <button type="submit" class=" button "><span class="mif-search"></span></button>
                 </div>
             </form>
-            <!-- SiteSearch Google -->
         </div>
 
         <div class="cell">

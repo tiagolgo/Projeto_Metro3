@@ -14,9 +14,7 @@
         <div class="cell">
             <h3 class="fg-darkBlue">${t["requisito.basico"]} <span class="default fg-green rating_nota"></span></h3>                                        
                 ${projeto.requisito.requisitosBasico}
-                <c:if test="${projeto.openHub}">
-                <script type='text/javascript' src='https://www.openhub.net/p/${fn:toLowerCase(projeto.nome)}/widgets/project_languages.js'></script>
-            </c:if>
+                
         </div>
 
         <!-- Requisitos adicionais -->

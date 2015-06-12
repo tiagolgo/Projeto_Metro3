@@ -18,45 +18,43 @@
         <c:import url="../componentes/header.jsp" />
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
-            <div class="panel" style="margin-top: 50px">
-                <div class="heading">
-                    <span class="title text-bold">Meus Projetos</span>
-                </div>
-                <div class="content">        
-                    <c:choose>
-                        <c:when test="${projetosUser.size()==0}">
-                            <p style="font-size: 20px">${t["sem.projeto"]}</p>
-                            <p style="margin-top: 50px">
-                                <a href='<c:url value="${t['url.novo.projeto']}"/>'>${t["cadastar.projeto"]}</a>
-                            </p>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="grid">
-                                <c:forEach var="projeto" items="${projetosUser}">
-                                    <div class="row border-bottom cells2">
-                                        <a href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" class="tile">
-                                            <div class="tile-content">
-                                                <div class="image-container">
-                                                    <img src="<c:url value="/images/logo/"/>${projeto.logotipo}"/>
-                                                </div>
+            <div class="row margin50">
+                <h1>Meus Projetos</h1>
+            </div>
+            <div class="row margin50">
+                <c:choose>
+                    <c:when test="${projetosUser.size()==0}">
+                        <p style="font-size: 20px">${t["sem.projeto"]}</p>
+                        <p style="margin-top: 50px">
+                            <a href='<c:url value="${t['url.novo.projeto']}"/>'>${t["cadastar.projeto"]}</a>
+                        </p>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="grid">
+                            <c:forEach var="projeto" items="${projetosUser}">
+                                <div class="row border-bottom cells2 set-border">
+                                    <a href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto[0]}"/>" class="tile">
+                                        <div class="tile-content">
+                                            <div class="image-container">
+                                                <!--<img src="c:url value="/images/logo/"/>{projeto.logotipo}"/>-->
+                                                <img src="<c:url value="${projeto[2]}"/>"/>
                                             </div>
-                                        </a>
-                                        <div class="cell">
-                                            <h4>${projeto.nome}</h4>
-                                            <p>Criacao: ${projeto.dataCriacao}</p>
-                                            <form action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
-                                                <input type="hidden" name="projeto.id"  value="${projeto.id}"/>
-                                                <input type="hidden" name="_method" value="DELETE"/>
-                                                <button class="button  bg-orange"><a class="fg-white" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto.id}"/>'> Editar</a></button>
-                                                <button class="button  bg-red fg-white remove-projeto" type="button">Remover</button>
-                                            </form>
                                         </div>
+                                    </a>
+                                    <div class="cell">
+                                        <h4>${projeto[1]}</h4>
+                                        <p>Criacao: ${projeto[3]}</p>
+                                        <form action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
+                                            <input type="hidden" name="id"  value="${projeto[0]}"/>
+                                            <a class="fg-red" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto[0]}"/>'> Editar</a>
+                                            <button class="button  bg-red fg-white remove-projeto" type="button">Remover</button>
+                                        </form>
                                     </div>
-                                </c:forEach>
-                            </div>
-                        </c:otherwise>
-                    </c:choose>
-                </div>
+                                </div>
+                            </c:forEach>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
             </div>
             <script>
                 $(function () {

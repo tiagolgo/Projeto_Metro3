@@ -40,8 +40,8 @@
                                     <div class="listview">
                                         <c:forEach var="projeto" items="${informacoesProjetos.projetosAntigo}">
                                             <a class="list" href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" >
-                                                <img src="<c:url value="/images/logo/"/>${projeto.logotipo}" class="list-icon"/>
-                                                <span class="list-title full-size text-bold"><c:out value="${projeto.nome}"/></span><br/>
+                                                <img src="${projeto.small_logo_url}" class="list-icon"/>
+                                                <span class="list-title full-size text-bold"><c:out value="${projeto.name}"/></span><br/>
                                                 <span class="text-light">sdfsdf</span>
                                             </a>  
                                         </c:forEach>
@@ -57,7 +57,7 @@
                                     <div class="listview">
                                         <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
                                             <div class="list">
-                                                <img src="<c:url value="/images/logo_linguagens/"/>${linguagem.texto}.png" class="list-icon"/>
+                                                <img src="" class="list-icon"/>
                                                 <span class="list-title text-bold"><c:out value="${linguagem.texto}"/></span><br/>
                                                 <span class="text-light">Utilizada em <c:out value="${linguagem.quantidade}"/> projeto(s)</span>
                                             </div>
@@ -74,8 +74,8 @@
                                     <div class="listview">
                                         <c:forEach var="recente" items="${informacoesProjetos.projetosRecente}">
                                             <a class="list" href="<c:url value="${t['url.buscar.projeto.id']}?id=${recente.id}"/>" >
-                                                <img src="<c:url value="/images/logo/"/>${recente.logotipo}" class="list-icon"/>
-                                                <span class="list-title text-bold"><c:out value="${recente.nome}"/></span><br/>
+                                                <img src="${recente.small_logo_url}" class="list-icon"/>
+                                                <span class="list-title text-bold"><c:out value="${recente.name}"/></span><br/>
                                                 <span class="text-light">xxcvxc</span>
                                             </a>
                                         </c:forEach>
@@ -86,7 +86,6 @@
                     </div>
                 </div>
             </div>
-            <iframe src="https://github.com/tiagolgo/Projeto-TCC/graphs/commit-activity" style='width: 100%;height: 300px'></iframe>
         </div>         
         <!--
 <footer class='border-top' style="left: 0;bottom: 0;position: absolute;width: 100%;height: 110px">

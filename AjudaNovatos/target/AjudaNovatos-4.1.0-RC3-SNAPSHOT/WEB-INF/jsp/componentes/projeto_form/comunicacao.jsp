@@ -1,17 +1,9 @@
-<%-- 
-    Document   : novo
-    Created on : 15/11/2014, 20:02:39
-    Author     : Tiago Luiz Gomes
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <input type="hidden" name="projeto.comunicacao.id" value="${projeto.comunicacao.id}"/>
-
 <p>Esta parte destina-se a apresentar ao novato os canais de comunicação que são utilizados pelo projeto.</p>
 <div class="grid fluid">
     <input type="hidden" name="projeto.comunicacao.pesquisa.id" value="${projeto.comunicacao.pesquisa.id}"/>
-
     <!-- canal de comunicação IRC -->
     <input type="hidden" name="projeto.comunicacao.irc.id" value="${projeto.comunicacao.irc.id}"/>
     <p class="text-bold fg-blue">O projeto possui IRC?
@@ -37,7 +29,6 @@
             ${projeto.comunicacao.irc.texto}
         </textarea>
     </div>
-
     <!-- lista de discussão -->
     <input type="hidden" name="projeto.comunicacao.lista.id" value="${projeto.comunicacao.lista.id}"/>
     <p class="text-bold fg-blue">O projeto possui Lista de Discussão?
