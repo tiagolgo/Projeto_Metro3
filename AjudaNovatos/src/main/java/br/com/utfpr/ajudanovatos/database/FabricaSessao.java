@@ -19,6 +19,6 @@ public class FabricaSessao {
 
     @Produces
     @RequestScoped
-    public Session criaSessao(SessionFactory factory) {return factory.openSession();}
-    public void fechaSessao(@Disposes Session session) {if (session.isOpen()) { session.close(); }}
+    public Session criaSessao(SessionFactory factory) {System.out.println("**** abrindo sessao ****");return factory.openSession();}
+    public void fechaSessao(@Disposes Session session) {if (session.isOpen()) { session.close(); System.out.println("**** fechando sessao *****");;}}
 }

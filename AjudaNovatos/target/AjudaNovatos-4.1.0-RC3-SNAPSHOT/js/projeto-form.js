@@ -62,14 +62,7 @@ $(function () {
     });
 });
 
-// ADICIONA NOVA LINGUAGEM AO PROJETO
-$(function () {
-    $("#add_linguagem").on("click", function () {
-        var linhas = document.getElementById("tab_linguagem").rows.length;
-        var lang = $("#lang").val();
-        $("#tab_linguagem").append("<tr><td><input type='hidden' name='projeto.linguagens[" + linhas + "].texto' value='" + lang + "'/>" + lang + "</td><td><button class='button link small-button fg-red' onclick='removeObjetos(this, \"/AjudaNovatos/removeLinguagem\");'>Remover</button></td></tr>");
-    });
-});
+
 
 // ADICIONA PLATAFORMA AO PROJETO
 $(function () {
@@ -80,23 +73,22 @@ $(function () {
     });
 });
 
-function removeObjetos(objeto, urlAction) {
-    var linha = $(objeto).closest("tr");
-    var obj = $(objeto).val();
-    console.log("removendo objeto " + obj);
-    if (obj === "") {
+function removeObjetos(id, obj, url) {
+    var linha = $(obj).closest("tr");
+    if (id === 0) {
         $(linha).remove();
     } else {
         $.ajax({
             type: 'GET',
-            url: urlAction,
-            data: "id=" + obj
+            url: url,
+            data: "id=" + id
         }).done(function () {
             $(linha).remove();
         }).fail(function (data) {
-            alert("Plataforma nao removida: " + data);
+            alert("Objeto não removido: " + data);
         });
     }
+    return false;
 }
 
 // BUSCA NO GOOGLE

@@ -9,12 +9,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name="link")
 public class Link implements Serializable {
 
     @Id

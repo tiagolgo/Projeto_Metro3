@@ -21,68 +21,76 @@
         <c:import url="../componentes/header.jsp"/>
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
-            <div class="row align-center">
+            <div class="row align-center margin60">
                 <h1 style="font-size: 4.5rem; line-height: 1" class="text-shadow metro-title">AjudaNovatos</h1>
                 <div class="padding20 sub-leader text-light">
-                    The front-end framework for developing projects on the web in Windows Metro Style
+                    ${t["index.texto1"]}
                 </div>
-                <h3>${t["index.dash.titulo"]}</h3>
-                <p>${t["index.dash.texto"]}</p>
+                <h3 class="text-light">${t["index.texto2"]}</h3>
+                <h4 class="text-light">${t["index.texto3"]}</h4>
             </div>
-            <div class="row">
+            <div class="row margin60">
                 <div class="grid" >
-                    <div class="row cells3">
+                    <div class="row cells2">
+
                         <!-- PROJETOS ADICIONADOS -->
-                        <div class="cell">
-                            <div class="panel">
-                                <div class="heading"><span class="title">${t["index.list.projetos"]}</span></div>
-                                <div class="content bg-white">
-                                    <div class="listview">
-                                        <c:forEach var="projeto" items="${informacoesProjetos.projetosAntigo}">
-                                            <a class="list" href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" >
-                                                <img src="${projeto.small_logo_url}" class="list-icon"/>
-                                                <span class="list-title full-size text-bold"><c:out value="${projeto.name}"/></span><br/>
-                                                <span class="text-light">sdfsdf</span>
-                                            </a>  
-                                        </c:forEach>
+                        <c:if test="${projetosIndex.size()>0}">
+                            <div class="cell">
+                                <div class="panel">
+                                    <div class="heading"><span class="title">${t["index.list.projetos"]}</span></div>
+                                    <div class="content bg-white">
+                                        <div class="listview">
+                                            <c:forEach var="projeto" items="${projetosIndex}">
+                                                <a class="list" href="<c:url value="${t['url.buscar.projeto.id']}?id=${projeto.id}"/>" >
+                                                    <img src="${projeto.small_logo_url}" class="list-icon"/>
+                                                    <span class="list-title full-size text-bold"><c:out value="${projeto.name}"/></span><br/>
+                                                    <span class="text-light"></span>
+                                                </a>  
+                                            </c:forEach>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:if>
+
                         <!-- LINGUAGENS MAIS USADAS -->
-                        <div class="cell">
-                            <div class="panel">
-                                <div class="heading"><span class="title">${t["index.list.linguagens"]}</span></div>
-                                <div class="content bg-white">
-                                    <div class="listview">
-                                        <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
-                                            <div class="list">
-                                                <img src="" class="list-icon"/>
-                                                <span class="list-title text-bold"><c:out value="${linguagem.texto}"/></span><br/>
-                                                <span class="text-light">Utilizada em <c:out value="${linguagem.quantidade}"/> projeto(s)</span>
-                                            </div>
-                                        </c:forEach>
-                                    </div>  
+                        <c:if test="${informacoesProjetos.linguagens.size()>0}">
+                            <div class="cell">
+                                <div class="panel">
+                                    <div class="heading"><span class="title">${t["index.list.linguagens"]}</span></div>
+                                    <div class="content bg-white">
+                                        <div class="listview">
+                                            <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
+                                                <a class="list" href="<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>">
+                                                    <img src="" class="list-icon"/>
+                                                    <span class="list-title text-bold"><c:out value="${linguagem}"/></span><br/>
+                                                    <!--<span class="text-light">Utilizada em c:out value="{linguagem.quantidade}"/> projeto(s)</span>-->
+                                                </a>
+                                            </c:forEach>
+                                        </div>  
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:if>
                         <!-- PROJETOS RECENTES -->
+                        <!--
                         <div class="cell">
-                            <div class="panel">
-                                <div class="heading"><span class="title">${t["index.list.novidades"]}</span></div>
-                                <div class="content bg-white">
-                                    <div class="listview">
-                                        <c:forEach var="recente" items="${informacoesProjetos.projetosRecente}">
-                                            <a class="list" href="<c:url value="${t['url.buscar.projeto.id']}?id=${recente.id}"/>" >
-                                                <img src="${recente.small_logo_url}" class="list-icon"/>
-                                                <span class="list-title text-bold"><c:out value="${recente.name}"/></span><br/>
-                                                <span class="text-light">xxcvxc</span>
-                                            </a>
-                                        </c:forEach>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
+                             <div class="panel">
+                                 <div class="heading"><span class="title">{t["index.list.novidades"]}</span></div>
+                                 <div class="content bg-white">
+                                     <div class="listview">
+                                         c:forEach var="recente" items="{informacoesProjetos.projetosRecente}">
+                                             <a class="list" href="c:url value="{t['url.buscar.projeto.id']}?id={recente.id}"/>" >
+                                                 <img src="{recente.small_logo_url}" class="list-icon"/>
+                                                 <span class="list-title text-bold">c:out value="{recente.name}"/></span><br/>
+                                                 <span class="text-light">xxcvxc</span>
+                                             </a>
+                                         /c:forEach>
+                                     </div>  
+                                 </div>
+                             </div>
+                         </div>
+                        -->
                     </div>
                 </div>
             </div>

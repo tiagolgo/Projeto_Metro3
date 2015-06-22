@@ -34,12 +34,11 @@
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Pesquisar_Antes" />
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Tarefa_Facil" />
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Feed" />
-        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Analise"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.AtividadeMensal"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Contribuinte"/>
-        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.EstatisticasOpenHub"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Licenca"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Link"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.NivelAtividade"/>
+        
     </session-factory>
 </hibernate-configuration>

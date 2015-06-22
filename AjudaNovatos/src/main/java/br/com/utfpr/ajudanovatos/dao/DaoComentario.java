@@ -27,7 +27,6 @@ public class DaoComentario extends Dao_Basic<Comentario> {
         StringBuilder sb = new StringBuilder();
         sb.append("insert into comentario (autor, dataComentario, texto, nota,").append(alvo).append(") values ('").append(autor).append("','").append(data).append("','").append(texto).append("',").append(nota).append(",").append(id).append(")");
         String sql = sb.toString();
-        System.out.println("sql comentrio "+sql);
         try {
             SQLQuery query = session.createSQLQuery(sql);
             query.executeUpdate();

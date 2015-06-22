@@ -21,10 +21,10 @@
                     <li>
                         <a href="" class="dropdown-toggle">${t["menu.sub.linguagem"]}</a>
                         <ul class="d-menu" data-role="dropdown">
-                            <c:forEach items="${informacoesProjetos.getLinguagens()}" var="linguagem">
-                                <li >
-                                    <a href="<c:url value="${t['url.projeto.linguagem']}?q=${linguagem.texto}"/>" >
-                                        <c:out value="${linguagem.texto}"/>
+                            <c:forEach items="${informacoesProjetos.linguagens}" var="linguagem">
+                                <li>
+                                    <a href='<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>' >
+                                        <c:out value="${linguagem}"/>
                                     </a>
                                 </li>
                             </c:forEach>
@@ -38,18 +38,20 @@
         <ul class="app-bar-menu" data-flexdirection="reverse">
             <li>
                 <div class="input-control text">
-                    <select id="select" style="min-width: 300px;">
-                        <option>option</option>
-                        <option>guiana</option>
-                        <option>option</option>
-                        <option>franca</option>
-                    </select>
+                    <form action="<c:url value='${t["url.nome.projeto"]}'/>" method="get">
+                        <select id="select" style="min-width: 300px;" name="projeto">
+                            <option value="">Selecione um projeto</option>
+                            <c:forEach var="nome" items="${informacoesProjetos.nomes}">
+                                <option>${nome}</option>
+                            </c:forEach>
+                        </select>
+                    </form>
                 </div>
             </li>
         </ul>
         <span class="app-bar-divider"></span>
         <ul class="app-bar-menu bg-red">
-            <li id="autenticar"><span style="font-size: 1.2rem;" class="text-shadow text-bold metro-title">Cadastre seu projeto</span></li>
+            <li class="autenticar"><span style="font-size: 1.2rem;" class="text-shadow text-bold metro-title">${t["btn.novo.projeto"]}</span></li>
         </ul>
         <span class="app-bar-divider"></span>
         <c:choose>
@@ -66,7 +68,7 @@
                     </div>
                 </div>
                 <ul class="app-bar-menu place-right"  >
-                    <li><a  href='<c:url value="${t['url.form.usuario']}"/>'> <span class="text-shadow text-light metro-title">Cadastre-se</span></a></li>
+                    <li><a  href='<c:url value="${t['url.form.usuario']}"/>'> <span class="text-shadow text-light metro-title">${t["btn.cadastrar"]}</span></a></li>
                 </ul>
             </c:when>
             <c:otherwise>
@@ -87,7 +89,7 @@
     </div>
 </div>
 <!-- dialog para login -->
-<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog1" style="display: none">
+<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog_form_login" style="display: none">
     <c:import url="../componentes/formLogin.jsp"/>
     <span class="opcao" hidden>dialog</span>
 </div>
@@ -96,7 +98,7 @@
     <c:import url="../componentes/comentario.jsp"/>
 </div>
 <!-- dialog de para buscar dados no openhub -->
-<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog3" style="display: none;">
+<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog_buscar_open_hub" style="display: none;">
     <label class="text-bold">Nome do Projeto</label>
     <p>Se você possui um projeto cadastrado no <a href="https://www.openhub.net/" target="_blank">BlackDyck|OpenHub</a> nós podemos encontrar algumas informações importantes sobre o seu projeto.</p>
     <form action="<c:url value="/buscarDadosProjeto"/>" method="get">
@@ -115,24 +117,37 @@
         $("#nao_possue_projeto").on("click", function () {
             $("#formulario1").submit();
         });
+
         $("#select").select2();
+
+        $("#select").on("change", function () {
+            var projeto = $(this).val();
+            if (projeto !== "") {
+                $(this).closest("form").submit();
+                console.log("change " + projeto);
+            }
+        });
+
         $(".cancel-autenticacao").on("click", function () {
             var dialog = $("#dialog1").data('dialog');
             dialog.close();
             $("#form-top").toggle();
         });
 
-        $("#autenticar").on("click", function () {
+        $(".autenticar").on("click", function () {
+            console.log("autenticar");
             $.ajax({
                 type: "get",
                 url: "/AjudaNovatos/isLogado"
             }).done(function (data) {
                 if (data.logado) {
+                    console.log("logado");
                     //$("#formulario1").submit();
-                    showDialog("#dialog3");
+                    showDialog("#dialog_buscar_open_hub");
                 } else {
+                    console.log("nao logado");
                     $(".msg-erros").empty();
-                    showDialog("#dialog1");
+                    showDialog("#dialog_form_login");
                 }
             });
         });
@@ -148,8 +163,9 @@
                 }).done(function (data) {
                     if (data.list[0]) {
                         // $(form).closest("div").find(".opcao").text() === "dialog" ? $("#formulario1").submit() : location.reload();
-                        $("#dialog1").hide();
-                        showDialog("#dialog3");
+                        $("#dialog_form_login").hide();
+                        //showDialog("#dialog_buscar_open_hub");
+                        window.location.reload();
                     } else {
                         var s = $(form).find(".msg-erros");
                         s.empty();

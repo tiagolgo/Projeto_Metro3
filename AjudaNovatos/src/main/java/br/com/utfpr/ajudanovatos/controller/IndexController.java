@@ -9,6 +9,8 @@ import br.com.utfpr.ajudanovatos.utils.dados_globais.Dados;
 import br.com.utfpr.ajudanovatos.dao.DaoProjeto;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Result;
+import br.com.utfpr.ajudanovatos.dao.DaoLinguagem;
 import javax.inject.Inject;
 
 /**
@@ -21,15 +23,16 @@ public class IndexController {
     @Inject
     private DaoProjeto dp;
     @Inject
+    private DaoLinguagem dl;
+    @Inject
     private Dados informacoes;
+    @Inject
+    private Result result;
 
     @Path(value = {"/"})
-    public void index() {
-        if (!this.informacoes.isAtualizado()) {
-            this.informacoes.setAtualizado(true);
-            this.informacoes.setLinguagens(this.dp.listLinguagens());
-            this.informacoes.setProjetosAntigo(this.dp.getPaginacao(0, 10, false));
-            this.informacoes.setProjetosRecente(this.dp.getPaginacao(0, 10, true));
-        }
+    public void index(){
+        this.informacoes.setLinguagens(this.dl.listLinguagens());
+        this.informacoes.setNomes(this.dp.retornaNomeProjetos());
+        this.result.include("projetosIndex",this.dp.getPaginacao(0, 10, false));
     }
 }

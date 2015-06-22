@@ -10,8 +10,8 @@ import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.view.Results;
-import br.com.utfpr.ajudanovatos.utils.estatisticas.ContainerEstatisticas;
 import br.com.utfpr.ajudanovatos.entidades.projeto.Contribuinte;
+import br.com.utfpr.ajudanovatos.utils.estatisticas.EstatisticasOpenHub;
 import java.util.List;
 import javax.inject.Inject;
 
@@ -27,7 +27,7 @@ public class EstatisticasController {
     @Inject
     Result result;
     @Inject
-    ContainerEstatisticas estatisticas;
+    EstatisticasOpenHub estatisticas;
 
     @Get("/linguagem_estatisticas.json")
     public void linguagemPercentage(Long id){
@@ -39,7 +39,7 @@ public class EstatisticasController {
     @Get("/dadosUsuario.json")
     public void getDadosUsuario(int id){
         Contribuinte retorno = null;
-        for(Contribuinte c: this.estatisticas.getEstatisticasOpenHub().getContribuintes()){
+        for(Contribuinte c: this.estatisticas.getContribuintes()){
             if(c.getId()==id){
                 retorno=c;
                 break;

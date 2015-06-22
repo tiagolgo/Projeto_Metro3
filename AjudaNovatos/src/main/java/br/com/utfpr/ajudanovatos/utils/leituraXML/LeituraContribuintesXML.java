@@ -5,8 +5,8 @@
  */
 package br.com.utfpr.ajudanovatos.utils.leituraXML;
 
-import br.com.utfpr.ajudanovatos.utils.estatisticas.ContainerEstatisticas;
 import br.com.utfpr.ajudanovatos.entidades.projeto.Contribuinte;
+import br.com.utfpr.ajudanovatos.utils.estatisticas.EstatisticasOpenHub;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,9 +26,9 @@ import org.xml.sax.helpers.DefaultHandler;
 @ApplicationScoped
 public class LeituraContribuintesXML extends DefaultHandler {
 
-    private final List<Contribuinte> contribuicoes = new ArrayList<>();private Contribuinte contribuicao; private String valorAtual;private ContainerEstatisticas estatisticas;
+    private final List<Contribuinte> contribuicoes = new ArrayList<>();private Contribuinte contribuicao; private String valorAtual;private EstatisticasOpenHub estatisticas;
 
-    public void setEstatisticas(ContainerEstatisticas estatisticas){this.estatisticas = estatisticas;}
+    public void setEstatisticas(EstatisticasOpenHub estatisticas){this.estatisticas = estatisticas;}
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{switch (qName) {case "contributor_fact":contribuicao = new Contribuinte();break;}}
@@ -41,9 +41,7 @@ public class LeituraContribuintesXML extends DefaultHandler {
         switch (qName) {
             case "contributor_id":this.contribuicao.setContributor_id(Long.parseLong(this.valorAtual));break;
             case "contributor_name":this.contribuicao.setContributor_name(this.valorAtual);break;
-//            case "primary_language_id":this.contribuicao.setPrimary_language_id(Long.parseLong(this.valorAtual));break;
             case "primary_language_nice_name":this.contribuicao.setPrimary_language_nice_name(this.valorAtual);break;
-            case "comment_ratio":this.contribuicao.setComment_ratio(this.valorAtual);break;
             case "first_commit_time":this.contribuicao.setFirst_commit_time(parseData());break;
             case "last_commit_time":this.contribuicao.setLast_commit_time(parseData());break;
             case "man_months":this.contribuicao.setMan_months(Integer.parseInt(this.valorAtual));break;
@@ -59,6 +57,6 @@ public class LeituraContribuintesXML extends DefaultHandler {
     }
 
     @Override
-    public void endDocument() throws SAXException{this.estatisticas.getEstatisticasOpenHub().setContribuintes(contribuicoes);}
+    public void endDocument() throws SAXException{this.estatisticas.setContribuintes(contribuicoes);}
 
 }

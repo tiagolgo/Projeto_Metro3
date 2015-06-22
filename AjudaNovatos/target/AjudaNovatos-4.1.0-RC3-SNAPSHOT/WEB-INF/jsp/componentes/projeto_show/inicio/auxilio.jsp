@@ -22,9 +22,9 @@
 
 <!-- Área de Comentários -->
 <div class="row coment-area" style="margin-top: 100px">
-    <h5 class="bg-blue padding10">Comentarios
+    <h5 class="padding10" style="border-bottom: 2px solid lightgray">Comentarios
         <c:if test="${userLogado.logado==true}">
-            <span class="element place-right"><a href="#" class="fg-white" onclick="exibirFormComentario(${projeto.comoIniciar.mentor.id}, 'mentor', this);"><i class="icon-plus"> </i> Novo</a></span>
+            <span class="element place-right"><a href="#" onclick="exibirFormComentario(${projeto.comoIniciar.mentor.id}, 'mentor', this);"><i class="icon-plus"> </i> Novo</a></span>
         </c:if>
     </h5>
 

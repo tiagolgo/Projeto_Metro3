@@ -6,7 +6,7 @@
 package br.com.utfpr.ajudanovatos.utils.leituraXML;
 
 import br.com.utfpr.ajudanovatos.entidades.projeto.AtividadeMensal;
-import br.com.utfpr.ajudanovatos.utils.estatisticas.ContainerEstatisticas;
+import br.com.utfpr.ajudanovatos.utils.estatisticas.EstatisticasOpenHub;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -27,17 +27,16 @@ public class LeituraAtividadeMensalXML extends DefaultHandler {
     private final List<AtividadeMensal> atividades = new ArrayList<>();
     private AtividadeMensal atividade;
     private String valorAtual;
-    private ContainerEstatisticas estatisticas;
+    private EstatisticasOpenHub estatisticas;
 
-    public void setEstatisticas(ContainerEstatisticas estatisticas){
+    public void setEstatisticas(EstatisticasOpenHub estatisticas){
         this.estatisticas = estatisticas;
     }
 
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException{
         switch (qName) {
-            case "activity_fact":
-                this.atividade = new AtividadeMensal();
+            case "activity_fact": this.atividade = new AtividadeMensal();
                 break;
         }
     }
@@ -50,35 +49,19 @@ public class LeituraAtividadeMensalXML extends DefaultHandler {
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException{
         switch (qName) {
-            case "month":
-                this.atividade.setMes(parseData());
+            case "month": this.atividade.setMes(parseData());
                 break;
-            case "code_added":
-                this.atividade.setCode_added(Integer.parseInt(this.valorAtual));
+            case "code_added": this.atividade.setCode_added(Integer.parseInt(this.valorAtual));
                 break;
-            case "code_removed":
-                this.atividade.setCode_removed(Integer.parseInt(this.valorAtual));
+            case "comments_added": this.atividade.setComments_added(Integer.parseInt(this.valorAtual));
                 break;
-            case "comments_added":
-                this.atividade.setComments_added(Integer.parseInt(this.valorAtual));
+            case "blanks_added": this.atividade.setBlanks_added(Integer.parseInt(this.valorAtual));
                 break;
-            case "comments_removed":
-                this.atividade.setComments_removed(Integer.parseInt(this.valorAtual));
+            case "commits": this.atividade.setCommits(Integer.parseInt(this.valorAtual));
                 break;
-            case "blanks_added":
-                this.atividade.setBlanks_added(Integer.parseInt(this.valorAtual));
+            case "contributors": this.atividade.setContributors(Integer.parseInt(this.valorAtual));
                 break;
-            case "blanks_removed":
-                this.atividade.setBlanks_removed(Integer.parseInt(this.valorAtual));
-                break;
-            case "commits":
-                this.atividade.setCommits(Integer.parseInt(this.valorAtual));
-                break;
-            case "contributors":
-                this.atividade.setContributors(Integer.parseInt(this.valorAtual));
-                break;
-            case "activity_fact":
-                this.atividades.add(atividade);
+            case "activity_fact": this.atividades.add(atividade);
                 break;
         }
     }
@@ -96,7 +79,7 @@ public class LeituraAtividadeMensalXML extends DefaultHandler {
 
     @Override
     public void endDocument() throws SAXException{
-        this.estatisticas.getEstatisticasOpenHub().setAtividade_mensal(atividades);
+        this.estatisticas.setAtividade_mensal(atividades);
     }
 
 }

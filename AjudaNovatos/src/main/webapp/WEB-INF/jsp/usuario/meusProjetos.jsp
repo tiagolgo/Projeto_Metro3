@@ -26,7 +26,7 @@
                     <c:when test="${projetosUser.size()==0}">
                         <p style="font-size: 20px">${t["sem.projeto"]}</p>
                         <p style="margin-top: 50px">
-                            <a href='<c:url value="${t['url.novo.projeto']}"/>'>${t["cadastar.projeto"]}</a>
+                            <a href="#" class="autenticar">${t["btn.novo.projeto"]}</a>
                         </p>
                     </c:when>
                     <c:otherwise>
@@ -46,8 +46,8 @@
                                         <p>Criacao: ${projeto[3]}</p>
                                         <form action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
                                             <input type="hidden" name="id"  value="${projeto[0]}"/>
-                                            <a class="fg-red" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto[0]}"/>'> Editar</a>
-                                            <button class="button  bg-red fg-white remove-projeto" type="button">Remover</button>
+                                            <a class="button link fg-green" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto[0]}"/>'> Editar</a>
+                                            <a class="button link fg-red remove-projeto">Remover</a>
                                         </form>
                                     </div>
                                 </div>

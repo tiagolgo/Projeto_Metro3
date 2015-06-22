@@ -12,6 +12,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.criterion.Projections;
 
 /**
  *
@@ -26,14 +27,14 @@ public class DaoLinguagem extends Dao_Basic<Linguagem> {
     }
 
     public List listLinguagens() throws HibernateException{
-        Criteria c = session.createCriteria(classe);
+        Criteria c = session.createCriteria(Linguagem.class);
+        c.setProjection(Projections.distinct(Projections.property("texto")));
+        c.setMaxResults(10);
         return c.list();
     }
 
     public List listLinguagensId(Long id) throws HibernateException{
-        //Criteria c = session.createCriteria(classe);
         SQLQuery c = session.createSQLQuery("select texto, id from linguagem where projeto="+id);
         return c.list();
     }
-
 }

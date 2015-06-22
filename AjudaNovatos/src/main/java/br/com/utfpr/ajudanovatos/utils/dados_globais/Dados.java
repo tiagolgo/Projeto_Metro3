@@ -6,7 +6,6 @@
 package br.com.utfpr.ajudanovatos.utils.dados_globais;
 
 import br.com.utfpr.ajudanovatos.beans.LinguagemBean;
-import br.com.utfpr.ajudanovatos.beans.ProjetoBean;
 import br.com.utfpr.ajudanovatos.entidades.projeto.Linguagem;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,80 +22,18 @@ import javax.inject.Named;
 @Named("informacoesProjetos")
 public class Dados {
 
-    private boolean atualizado = false;
-    private final List<LinguagemBean> linguagens = new ArrayList<>();
-    private List<ProjetoBean> projetosAntigo = new ArrayList();
-    private List<ProjetoBean> projetosRecente = new ArrayList();
-    private int totalProjetos;
+    private List<Linguagem> linguagens = new ArrayList<>();
+    private List<Object> nomes=new ArrayList<>();
     private final HashMap<String, Integer> totais = new HashMap<>();
 
-    public boolean isAtualizado(){
-        return atualizado;
+    public List<Object> getNomes(){
+        return nomes;
     }
 
-    public void setAtualizado(boolean atualizado){
-        this.atualizado = atualizado;
-    }
-
-    public List<ProjetoBean> getProjetosAntigo(){
-        return projetosAntigo;
-    }
-
-    public void setProjetosAntigo(List<ProjetoBean> projetosAntigo){
-        this.projetosAntigo = projetosAntigo;
-    }
-
-    public List<ProjetoBean> getProjetosRecente(){
-        return projetosRecente;
-    }
-
-    public void setProjetosRecente(List<ProjetoBean> projetosRecente){
-        this.projetosRecente = projetosRecente;
-    }
-
-    public int getTotalProjetos(){
-        return totalProjetos;
-    }
-
-    public void setProjetoRecente(ProjetoBean projeto){
-        boolean existe = false;
-        for (ProjetoBean p : this.projetosRecente) {
-            if (p.getName().equals(projeto.getName())) {
-                existe = true;
-                break;
-            }
-        }
-        if (!existe&&this.projetosRecente.size()==10) {
-            this.projetosRecente.remove(9);
-        }
-        this.projetosRecente.add(0, projeto);
-
-        this.totalProjetos = totalProjetos+1;
-    }
-
-    public void setProjetoAntigo(ProjetoBean projeto){
-        boolean existe = false;
-        for (ProjetoBean p : this.projetosAntigo) {
-            if (p.getName().equals(projeto.getName())) {
-                p.setId(projeto.getId());
-                p.setSmall_logo_url(projeto.getSmall_logo_url());
-                p.setName(projeto.getName());
-                existe = true;
-                break;
-            }
-        }
-
-        if (!existe&&this.projetosAntigo.size()<10) {
-            this.projetosAntigo.add(projeto);
-        }
-    }
-
-    public void updateLogoProjeto(String projeto, String logo){
-        for (ProjetoBean p : this.projetosRecente) {
-            if (!p.getName().equals(projeto)) {
-                p.setSmall_logo_url(logo);
-                break;
-            }
+    public void setNomes(List<Object> nomes){
+        this.nomes = nomes;
+        for(Object p:this.nomes){
+            System.out.println("Nome "+p.toString());
         }
     }
 
@@ -105,7 +42,7 @@ public class Dados {
     }
 
     public void setLinguagens(List<Linguagem> langs){
-        for (Linguagem lang : langs) {
+        /*for (Linguagem lang : langs) {
             if (!totais.containsKey(lang.getTexto())) {//nao contem
                 totais.put(lang.getTexto(), 1);
             } else {//ja contem
@@ -119,44 +56,17 @@ public class Dados {
             lb.setTexto(entrySet.getKey());
             lb.setQuantidade(entrySet.getValue());
             this.linguagens.add(lb);
-        }
+        }*/
+    
+        this.linguagens=langs;
     }
 
+    
     public HashMap<String, Integer> getTotais(){
         return totais;
     }
 
-    public void updateLogo(String projeto, String logo){
-        for (ProjetoBean p : this.projetosAntigo) {
-            if (p.getName().equals(projeto)) {
-                p.setSmall_logo_url(logo);
-                break;
-            }
-        }
-        for (ProjetoBean p : this.projetosRecente) {
-            if (p.getName().equals(projeto)) {
-                p.setSmall_logo_url(logo);
-                break;
-            }
-        }
-    }
-
-    public void removeProjetos(String projeto){
-        for (ProjetoBean p : this.projetosAntigo) {
-            if (p.getName().equals(projeto)) {
-                this.projetosAntigo.remove(p);
-                break;
-            }
-        }
-        for (ProjetoBean p : this.projetosRecente) {
-            if (p.getName().equals(projeto)) {
-                this.projetosRecente.remove(p);
-                break;
-            }
-        }
-    }
-
-    public void removeLinguagem(List<Linguagem> langs){
+   /* public void removeLinguagem(List<Linguagem> langs){
         for (Linguagem lang : langs) {
             if (totais.containsKey(lang.getTexto())) {
                 if (totais.get(lang.getTexto())-1==0) {
@@ -174,6 +84,6 @@ public class Dados {
             lb.setQuantidade(entrySet.getValue());
             this.linguagens.add(lb);
         }
-    }
+    }*/
 
 }

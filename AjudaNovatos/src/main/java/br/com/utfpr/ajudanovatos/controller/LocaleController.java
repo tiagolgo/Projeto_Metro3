@@ -40,6 +40,6 @@ public class LocaleController {
     private void setLocale(Locale novo) {
         Config.set(request.getSession(), Config.FMT_LOCALE, novo);
         Config.set(request.getSession(), Config.FMT_FALLBACK_LOCALE, novo);
-        this.resultado.forwardTo(IndexController.class).index();
+        this.resultado.redirectTo(IndexController.class).index();
     }
 }

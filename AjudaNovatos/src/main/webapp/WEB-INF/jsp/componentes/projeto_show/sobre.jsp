@@ -13,29 +13,49 @@
 
 <div style="font-size: 20px; margin-bottom: 40px" class="sub-leader text-light align-justify">
     <div class="grid">
-        <div class="row ">
-            <c:out value="${projeto.description}"/>
-        </div>
+
         <div class="row cells2">
+
             <div class="cell">
-                <p><span class="text-bold">${t["projeto.pagina"]}</span><a href="http://<c:out value="${projeto.homepage_url}"/>" target="_blank"> ${projeto.homepage_url}</a></p>
-                        <c:if test="${projeto.linguagens==null}">
-                    <p><span class="text-bold">${t["projeto.linguagem"]}</span>
+                <p>
+                    <c:out value="${projeto.description}"/>
+                </p>
+                <h4 class="text-light">Total de Linhas de Código do Projeto <span class="text-bold fg-lightBlue">${projeto.total_code_lines}</span> </h4>
+                <h4 class="text-light">Total de Commits <span class="text-bold fg-lightBlue">${projeto.total_commit_count}</span></h4>
+                <h4 class="text-light">Número de participantes no projeto <span class="fg-lightBlue text-bold">${projeto.total_contributor_count}</span></h4>
+            </div>
+
+            <div class="cell">
+                <c:if test="${projeto.linguagens==null}">
+                    <p>
+                        <span class="text-bold">${t["projeto.linguagem"]}</span>
                         <span class="fg-lightBlue"><c:out value="${projeto.linguagens.toString().replace('[','').replace(']','')}"/></span>
                     </p>
                 </c:if>
 
-                <h4 class="title">Links</h4>
-                <c:forEach var="link" items="${projeto.links}">
-                    <p><span class="mif-link"></span> <a href="${link.url}">${link.title}</a></p>
-                    </c:forEach> 
+                <div class="grid">
+                    <div class="row cells2">
+                        <div class="cell" style="width: 30%;text-align: right">
+                            <span class="text-bold">${t["projeto.pagina"]} </span>
+                        </div>
+                        <div class="cell">
+                            <a href="http://<c:out value="${projeto.homepage_url}"/>" target="_blank"> ${projeto.homepage_url}</a>
+                        </div>
+                    </div>
+                    <c:if test="${projeto.links.size()>0}">
+                        <div class="row cells2">
+                            <div class="cell" style="width: 30%;text-align: right"><h4 class="title text-bold">Links:</h4></div>
+                            <div class="cell">
+                                <c:forEach var="link" items="${projeto.links}">
+                                    <p>
+                                        <span class="mif-link"></span> <a href="${link.url}" target="_blank">${link.title}</a>
+                                    </p>
+                                </c:forEach> 
+                            </div>
+                        </div>
+                    </c:if>
+                </div>
             </div>
-            <div class="cell">
-                <h4 class="text-light">Total de Linhas de Código do Projeto <span class="text-bold fg-lightBlue">${container_estatisticas.estatisticasOpenHub.analise.total_code_lines}</span> </h4>
-                <h4 class="text-light">Total de Commits <span class="text-bold fg-lightBlue">${container_estatisticas.estatisticasOpenHub.analise.total_commit_count}</span></h4>
-                <h4 class="text-light">Número de participantes no projeto <span class="fg-lightBlue text-bold">${container_estatisticas.estatisticasOpenHub.analise.total_contributor_count}</span></h4>
-            </div>
-
         </div>
     </div>
 </div>
@@ -50,11 +70,11 @@
     </div>
 </div>
 
-<div class="row" style="border-top: 2px solid blue;">
+<div class="row">
     <h2>Comunidade</h2>
     <h4>Contribuintes</h4>
     <div class="listview set-border padding10 default list-type-listing" data-role="listview">
-        <c:forEach var="contribuinte" items="${container_estatisticas.estatisticasOpenHub.contribuintes}">
+        <c:forEach var="contribuinte" items="${projeto.contribuintes}">
             <div class="list" onclick="exibirUsuario(${contribuinte.id});">
                 <img src="/AjudaNovatos/images/projeto/contribunte.gif" class="list-icon">
                 <span class="list-title margin5"> ${contribuinte.contributor_name}</span>
@@ -65,7 +85,7 @@
     <div id="contribuintes" class="set-border"></div>
 </div>
 
-<div class="row" style="border-top: 2px solid blue;">
+<div class="row">
     <h2>Atividade do Projeto</h2>
     <h4>Commits por mes</h4>
     <div id="commits"></div>
@@ -123,7 +143,7 @@
             tooltip: {crosshairs: true, shared: true},
             yAxis: {title: {text: ''}},
             legend: {enabled: true},
-            series: [{name: 'contribuintes', data: [${container_estatisticas.estatisticasOpenHub.dadosContribuintesMensais()}]}]
+            series: [{name: 'contribuintes', data: [${projeto.dadosContribuintesMensais()}]}]
         });
 
         $('#commits').highcharts({
@@ -133,7 +153,7 @@
             tooltip: {crosshairs: true, shared: true},
             legend: {enabled: true},
             plotOptions: {spline: {marker: {radius: 4, lineColor: '#666666', lineWidth: 1}}},
-            series: [{name: 'commis', pointStart: Date.UTC(2003, 0), pointInterval: 12 * 30 * 3600 * 1000, data: [${container_estatisticas.estatisticasOpenHub.dadosCommitsMensais()}]}]
+            series: [{name: 'commis', pointStart: Date.UTC(2003, 0), pointInterval: 12 * 30 * 3600 * 1000, data: [${projeto.dadosCommitsMensais()}]}]
         });
 
         $('#codigo').highcharts({
@@ -145,13 +165,13 @@
             plotOptions: {spline: {marker: {radius: 4, lineColor: '#666666', lineWidth: 1}}},
             series: [{
                     name: 'Codigo',
-                    data: [${container_estatisticas.estatisticasOpenHub.getLinhasAdicionadas()}]
+                    data: [${projeto.getLinhasAdicionadas()}]
                 }, {
                     name: 'Comentarios',
-                    data: [${container_estatisticas.estatisticasOpenHub.getComentariosAdicionados()}]
+                    data: [${projeto.getComentariosAdicionados()}]
                 }, {
                     name: 'Linhas em Branco',
-                    data: [${container_estatisticas.estatisticasOpenHub.getLinhasEmBranco()}]
+                    data: [${projeto.getLinhasEmBranco()}]
                 }
             ]
         });

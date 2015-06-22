@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
 /**
@@ -18,6 +19,7 @@ import javax.persistence.OneToOne;
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name="como_iniciar")
 public class Como_Iniciar implements Serializable {
 
     @Id

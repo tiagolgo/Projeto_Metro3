@@ -6,6 +6,7 @@
 package br.com.utfpr.ajudanovatos.dao;
 
 import java.util.List;
+import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -26,15 +27,19 @@ public class Dao_Basic<T> implements Dao<T> {
         Transaction tr = null;
         try {
             tr = session.beginTransaction();
-            session.saveOrUpdate(o);
-            session.flush();
+            session.persist(o);
             tr.commit();
         } catch (HibernateException e) {
-            e.printStackTrace();
             if (tr!=null) {
                 tr.rollback();
             }
         }
+    }
+
+    public void atualiza(T o) throws HibernateException{
+        Transaction tr = session.beginTransaction();
+        session.update(o);
+        tr.commit();
     }
 
     @Override
@@ -44,16 +49,14 @@ public class Dao_Basic<T> implements Dao<T> {
 
     @Override
     public boolean delete(T o) throws HibernateException{
-        Transaction tr=null;
+        Transaction tr = null;
         try {
-            tr=session.beginTransaction();
+            tr = session.beginTransaction();
             session.delete(o);
-            session.flush();
             tr.commit();
             return true;
         } catch (HibernateException e) {
-            session.beginTransaction().rollback();
-            System.out.println(e.getCause());
+            tr.rollback();
             return false;
         }
     }
@@ -61,7 +64,9 @@ public class Dao_Basic<T> implements Dao<T> {
     @Override
     public List<T> lista() throws HibernateException{
         try {
-            return session.createCriteria(classe).list();
+            Criteria c = session.createCriteria(classe);
+            List list = c.list();
+            return list;
         } catch (HibernateException e) {
             return null;
         }
@@ -73,7 +78,6 @@ public class Dao_Basic<T> implements Dao<T> {
             SQLQuery q = session.createSQLQuery("delete from "+classe+" where id = "+id);
             q.executeUpdate();
             session.beginTransaction().commit();
-            session.flush();
             return true;
         } catch (Exception e) {
             return false;

@@ -9,19 +9,21 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
 @Entity
+@Table(name = "contribuinte")
 public class Contribuinte implements Serializable {
 
     @Id
     @GeneratedValue
     private long id;
-    private long contributor_id, primary_language_id;
-    private String contributor_name, primary_language_nice_name, comment_ratio;
+    private long contributor_id;
+    private String contributor_name, primary_language_nice_name;
     private int man_months, commits;
     private String first_commit_time, last_commit_time;
 
@@ -41,14 +43,6 @@ public class Contribuinte implements Serializable {
         this.contributor_id = contributor_id;
     }
 
-    public long getPrimary_language_id(){
-        return primary_language_id;
-    }
-
-    public void setPrimary_language_id(long primary_language_id){
-        this.primary_language_id = primary_language_id;
-    }
-
     public String getContributor_name(){
         return contributor_name;
     }
@@ -63,14 +57,6 @@ public class Contribuinte implements Serializable {
 
     public void setPrimary_language_nice_name(String primary_language_nice_name){
         this.primary_language_nice_name = primary_language_nice_name;
-    }
-
-    public String getComment_ratio(){
-        return comment_ratio;
-    }
-
-    public void setComment_ratio(String comment_ratio){
-        this.comment_ratio = comment_ratio;
     }
 
     public int getMan_months(){

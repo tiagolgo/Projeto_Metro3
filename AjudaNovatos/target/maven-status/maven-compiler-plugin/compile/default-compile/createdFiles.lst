@@ -5,6 +5,7 @@ br\com\utfpr\ajudanovatos\entidades\projeto\Link_.class
 br\com\utfpr\ajudanovatos\beans\LinguagemBean.class
 br\com\utfpr\ajudanovatos\utils\leituraXML\DadosSobreContribuintes_XML.class
 br\com\utfpr\ajudanovatos\controller\IndexController.class
+br\com\utfpr\ajudanovatos\utils\estatisticas\EstatisticasOpenHub.class
 br\com\utfpr\ajudanovatos\utils\mail\SendMail.class
 br\com\utfpr\ajudanovatos\controller\ComentarioController.class
 br\com\utfpr\ajudanovatos\controller\LocaleController.class
@@ -13,7 +14,6 @@ br\com\utfpr\ajudanovatos\entidades\projeto\Linguagem.class
 br\com\utfpr\ajudanovatos\entidades\projeto\NivelAtividade_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Fluxo_Contribuicao_.class
 br\com\utfpr\ajudanovatos\database\FabricaSessao.class
-br\com\utfpr\ajudanovatos\entidades\projeto\EstatisticasOpenHub.class
 br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraProjetoXML.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Licenca_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Plataforma.class
@@ -38,7 +38,6 @@ br\com\utfpr\ajudanovatos\controller\UtilsController.class
 br\com\utfpr\ajudanovatos\entidades\usuario\Usuario.class
 br\com\utfpr\ajudanovatos\controller\UsuarioController.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Lista_Discussao_.class
-br\com\utfpr\ajudanovatos\entidades\projeto\Analise_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Repositorio_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Chat_Irc.class
 br\com\utfpr\ajudanovatos\beans\AtividadeMensalBean.class
@@ -55,12 +54,10 @@ br\com\utfpr\ajudanovatos\entidades\projeto\Tarefa_Facil_.class
 br\com\utfpr\ajudanovatos\utils\upload\UploadImagem.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Como_Iniciar_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\AtividadeMensal.class
-br\com\utfpr\ajudanovatos\entidades\projeto\Analise.class
 br\com\utfpr\ajudanovatos\entidades\usuario\Senha_.class
 br\com\utfpr\ajudanovatos\dao\Dao.class
 br\com\utfpr\ajudanovatos\dao\DaoLinguagem.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Chat_Irc_.class
-br\com\utfpr\ajudanovatos\utils\estatisticas\ContainerEstatisticas.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Plataforma_.class
 br\com\utfpr\ajudanovatos\controller\ProjetoController.class
 br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraAtividadeMensalXML.class
@@ -71,7 +68,6 @@ br\com\utfpr\ajudanovatos\dao\Dao_Basic.class
 br\com\utfpr\ajudanovatos\beans\ProjetoBean.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Licenca.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Requisito_.class
-br\com\utfpr\ajudanovatos\entidades\projeto\EstatisticasOpenHub_.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Fluxo_Contribuicao.class
 br\com\utfpr\ajudanovatos\entidades\usuario\Usuario_.class
 br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraContribuintesXML.class

@@ -14,8 +14,8 @@ import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.observer.upload.UploadedFile;
+import br.com.utfpr.ajudanovatos.utils.estatisticas.EstatisticasOpenHub;
 import br.com.utfpr.ajudanovatos.entidades.projeto.Projeto;
-import br.com.utfpr.ajudanovatos.utils.estatisticas.ContainerEstatisticas;
 import br.com.utfpr.ajudanovatos.utils.leituraXML.LeituraAtividadeMensalXML;
 import br.com.utfpr.ajudanovatos.utils.leituraXML.LeituraContribuintesXML;
 import br.com.utfpr.ajudanovatos.utils.leituraXML.LeituraProjetoXML;
@@ -49,7 +49,7 @@ public class UtilsController {
     @Inject
     Projeto projeto;
     @Inject
-    ContainerEstatisticas estatisticasOpenHub;
+    EstatisticasOpenHub estatisticasOpenHub;
 
     @Get("/removeLinguagem")
     public void removeLinguagem(Long id){
@@ -63,6 +63,15 @@ public class UtilsController {
     @Get("/removePlataforma")
     public void removePlataforma(Long id){
         if (this.dao.deletePorId("plataforma", id)) {
+            this.result.nothing();
+        } else {
+            this.result.notFound();
+        }
+    }
+    
+    @Get("/removeLink")
+    public void removeLink(Long id){
+        if (this.dao.deletePorId("link", id)) {
             this.result.nothing();
         } else {
             this.result.notFound();
@@ -86,7 +95,6 @@ public class UtilsController {
         if (this.upload.gravarImagem(imagem, logolabel)) {
             try {
                 this.dao.persisteLogo(logolabel, nomeprojeto);
-                this.dados.updateLogo(nomeprojeto, logolabel);
                 this.result.redirectTo(IndexController.class).index();
             } catch (HibernateException e) {
                 this.result.include("nomeprojeto", nomeprojeto);
@@ -102,7 +110,6 @@ public class UtilsController {
 
     @Path("/buscarDadosProjeto")
     public void buscarDadosOpenHub(String nome) throws SAXException, IOException, ParserConfigurationException{
-        System.out.println("nome a buscar "+nome);
         if (!this.dao.seProjetoExiste(nome)) {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
             parserDadosProjeto(parser, nome);
@@ -111,7 +118,7 @@ public class UtilsController {
 
             this.result.include("projeto", this.projeto);
         }
-
+        
         this.result.forwardTo(ProjetoController.class).formulario();
     }
     

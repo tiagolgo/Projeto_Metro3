@@ -5,6 +5,7 @@ C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\dados_globais\Dados.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\beans\LinguagemBean.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Contribuinte.java
+C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\estatisticas\EstatisticasOpenHub.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\NivelAtividade.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\Dao_Basic.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\mail\SendMail.java
@@ -14,9 +15,7 @@ C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoCo
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoUsuario.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\database\ConexaoBanco.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Configurar_Workspace.java
-C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\estatisticas\ContainerEstatisticas.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Como_Iniciar.java
-C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\EstatisticasOpenHub.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Chat_Irc.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Plataforma.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\IndexController.java
@@ -55,7 +54,6 @@ C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\Dao.j
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Linguagem.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\AdminController.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\ComentarioController.java
-C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Analise.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\AtividadeMensal.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\controller\UsuarioController.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Fluxo_Contribuicao.java
