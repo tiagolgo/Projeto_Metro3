@@ -30,9 +30,11 @@ public class Tarefa_Facil implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
+    
     @OneToMany(targetEntity = Feed.class,cascade = CascadeType.ALL,orphanRemoval = true)
     @JoinColumn(name = "tarefa")
     private List<Feed> feeds = new ArrayList<>();
+    
     @OneToMany(targetEntity = Comentario.class,cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JoinColumn(name = "tarefa", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();

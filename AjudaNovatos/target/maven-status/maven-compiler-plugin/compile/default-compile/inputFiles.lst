@@ -7,7 +7,6 @@ C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\beans\Lin
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Contribuinte.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\estatisticas\EstatisticasOpenHub.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\NivelAtividade.java
-C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\Dao_Basic.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\mail\SendMail.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraAtividadeMensalXML.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Link.java
@@ -31,9 +30,9 @@ C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\usuario\Usuario.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\upload\UploadImagem.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoProjeto.java
+C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoBasic.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\encriptacao\EncriptacaoPassword.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\database\FabricaSessao.java
-C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoEstatisticasOpenHub.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\entidades\projeto\Repositorio.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\dao\DaoLinguagem.java
 C:\Projeto_Metro3\AjudaNovatos\src\main\java\br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraRepositoriosXML.java

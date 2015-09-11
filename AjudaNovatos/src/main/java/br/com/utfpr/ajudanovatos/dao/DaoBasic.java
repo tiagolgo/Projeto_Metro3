@@ -17,22 +17,19 @@ import org.hibernate.criterion.Restrictions;
  * @author Tiago Luiz Gomes
  * @param <T>
  */
-public class Dao_Basic<T> implements Dao<T> {
+public class DaoBasic<T> implements Dao<T> {
 
     protected static Class classe;
     protected static Session session;
 
     @Override
     public void persiste(T o) throws HibernateException{
-        Transaction tr = null;
         try {
-            tr = session.beginTransaction();
             session.persist(o);
-            tr.commit();
+            session.beginTransaction().commit();
+            session.flush();
         } catch (HibernateException e) {
-            if (tr!=null) {
-                tr.rollback();
-            }
+            e.printStackTrace();
         }
     }
 
@@ -49,14 +46,12 @@ public class Dao_Basic<T> implements Dao<T> {
 
     @Override
     public boolean delete(T o) throws HibernateException{
-        Transaction tr = null;
         try {
-            tr = session.beginTransaction();
             session.delete(o);
-            tr.commit();
+            session.beginTransaction().commit();
+            //session.flush();
             return true;
         } catch (HibernateException e) {
-            tr.rollback();
             return false;
         }
     }

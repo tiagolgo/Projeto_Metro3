@@ -18,7 +18,7 @@ import org.hibernate.criterion.Projections;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoLinguagem extends Dao_Basic<Linguagem> {
+public class DaoLinguagem extends DaoBasic<Linguagem> {
 
     @Inject
     public DaoLinguagem(Session s){

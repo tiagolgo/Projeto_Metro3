@@ -17,6 +17,7 @@ import br.com.caelum.vraptor.view.Results;
 import br.com.utfpr.ajudanovatos.entidades.usuario.Usuario;
 import br.com.utfpr.ajudanovatos.utils.usuario.UsuarioLogado;
 import br.com.utfpr.ajudanovatos.utils.encriptacao.EncriptacaoPassword;
+import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
 import org.hibernate.HibernateException;
@@ -57,12 +58,17 @@ public class UsuarioController {
             if (this.userLogado.getId()>0) {
                 usuario.setId(this.userLogado.getId());
             }
-            String email = usuario.getEmail();
-            String senhaTexto = usuario.getPassword().getSenha();
+            String nome = usuario.getNome();
+            //String senhaTexto = usuario.getPassword().getSenha();
             String senha = this.encriptacao.encripta(usuario.getPassword().getSenha());
             usuario.getPassword().setSenha(senha);
-            this.dao.persiste(usuario);
-            this.result.forwardTo(LoginController.class).acessar(email, senhaTexto);
+            Serializable s = this.dao.salvarUsuario(usuario);
+            
+            this.userLogado.setId(Long.parseLong(s.toString()));
+            this.userLogado.setLogado(true);
+            this.userLogado.setNome(nome);
+            //this.result.forwardTo(LoginController.class).acessar(email, senhaTexto);
+            this.result.redirectTo(IndexController.class).index();
         } catch (HibernateException e) {
             e.printStackTrace();
             this.result.of(this).formulario();
@@ -76,15 +82,11 @@ public class UsuarioController {
     }
 
     @Delete(value = {"en/user/remove/{id}", "pt/usuario/remove/{id}"})
-    public void remover(Long id){
-        try {
-            Usuario usuario = new Usuario();
-            usuario.setId(id);
-            this.dao.delete(usuario);
-            this.result.include("success", "Usuário removido com sucesso!");
-        } catch (Exception e) {
-            System.out.println("erro ao tentar excluir");
-        }
+    public void remover(Long id) throws HibernateException{
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+        this.dao.delete(usuario);
+        this.result.include("success", "Usuário removido com sucesso!");
     }
 
     @Get(value = {"en/perfil", "pt/perfil"})

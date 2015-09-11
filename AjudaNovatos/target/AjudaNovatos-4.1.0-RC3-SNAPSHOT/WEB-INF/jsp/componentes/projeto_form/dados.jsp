@@ -6,10 +6,10 @@
 <input type="hidden" value="${projeto.html_url}" name="projeto.html_url"/>
 <input type="hidden" value="${projeto.download_url}" name="projeto.download_url"/>
 <input type="hidden" value="${projeto.homepage_url}" name="projeto.homepage_url"/>
+
 <div class="grid">
     <div class="row cells2">
         <div class="cell bg-white">
-
             <div class="row">
                 <label class="text-bold">Nome:</label>
                 <div class="input-control text full-size" data-role="input">

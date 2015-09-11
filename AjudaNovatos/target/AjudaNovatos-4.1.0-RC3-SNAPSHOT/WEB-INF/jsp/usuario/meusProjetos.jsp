@@ -24,10 +24,12 @@
             <div class="row margin50">
                 <c:choose>
                     <c:when test="${projetosUser.size()==0}">
-                        <p style="font-size: 20px">${t["sem.projeto"]}</p>
-                        <p style="margin-top: 50px">
-                            <a href="#" class="autenticar">${t["btn.novo.projeto"]}</a>
-                        </p>
+                        <div class="fg-green">
+                            <h2>${t["sem.projeto"]}</h2>
+                            <p style="margin-top: 50px">
+                                <a href="#" class="button success autenticar">${t["btn.novo.projeto"]}</a>
+                            </p>
+                        </div>
                     </c:when>
                     <c:otherwise>
                         <div class="grid">
@@ -46,8 +48,8 @@
                                         <p>Criacao: ${projeto[3]}</p>
                                         <form action="<c:url value="${t['url.remove.projeto']}"/>" method="post">
                                             <input type="hidden" name="id"  value="${projeto[0]}"/>
-                                            <a class="button link fg-green" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto[0]}"/>'> Editar</a>
-                                            <a class="button link fg-red remove-projeto">Remover</a>
+                                            <a class="button  bg-blue" href='<c:url value="${t['url.editar.projeto.id']}?id=${projeto[0]}"/>'><span class="mif-pencil"></span> Editar</a>
+                                            <a class="button  bg-red remove-projeto"><span class="mif-bin"></span>Remover</a>
                                         </form>
                                     </div>
                                 </div>
@@ -56,15 +58,30 @@
                     </c:otherwise>
                 </c:choose>
             </div>
+            <div class="padding20 dialog" data-role="dialog" id="dialogRemoveProjeto" data-overlay="true" data-overlay-color="op-dark" data-close-button="true" data-windows-style="true">
+                <div class="container" style="padding-left: 100px;padding-right: 100px">
+                    <h1>Confirma a exclusão do projeto?</h1>
+                    <p>
+                        O projeto será removido permanentemente.
+                    </p>
+                    <button class="button warning" id="removerProjetoSim">Sim</button>
+                    <button class="button info" id="removerProjetoNao">Não</button>
+                </div>
+            </div>
             <script>
                 $(function () {
+                    var form_remover;
                     $(".remove-projeto").on("click", function () {
-                        var c = confirm("Deseja realmente remover o projeto?");
-                        if (c) {
-                            var form = $(this).closest("form");
-                            console.log(form);
-                            form.submit();
-                        }
+                        form_remover = $(this).closest("form");
+                        showDialog("#dialogRemoveProjeto");
+                    });
+
+                    $("#removerProjetoSim").on("click", function () {
+                        $(form_remover).submit();
+                    });
+
+                    $("#removerProjetoNao").on("click", function () {
+                        $(".dialog-close-button").click();
                     });
                 });
             </script>

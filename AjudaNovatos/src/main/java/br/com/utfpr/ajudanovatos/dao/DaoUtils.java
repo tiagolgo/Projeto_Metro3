@@ -14,7 +14,7 @@ import org.hibernate.Session;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoUtils extends Dao_Basic<Projeto> {
+public class DaoUtils extends DaoBasic<Projeto> {
 
     @Inject
     public DaoUtils(Session sessao){

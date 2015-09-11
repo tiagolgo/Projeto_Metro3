@@ -62,8 +62,6 @@ $(function () {
     });
 });
 
-
-
 // ADICIONA PLATAFORMA AO PROJETO
 $(function () {
     $("#add_plataforma").on("click", function () {
@@ -96,8 +94,9 @@ $(".google-search").on("submit", function (event) {
     event.preventDefault();
     var dominio = $(this).find("#url").val();
     var site = $(this).find("#url").val();
-    var texto = $(this).find("input").val();
+    var texto = $(this).find(".text-busca").val();
     if (texto.length > 0) {
+        console.log("texto "+texto+"; url "+site);
         window.open("https://www.google.com.br/?gws_rd=ssl#q=" + texto + "&domains=" + dominio + "&sitesearch=" + site);
     }
 });

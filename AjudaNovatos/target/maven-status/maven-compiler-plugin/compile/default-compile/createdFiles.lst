@@ -44,6 +44,7 @@ br\com\utfpr\ajudanovatos\beans\AtividadeMensalBean.class
 br\com\utfpr\ajudanovatos\dao\DaoUtils.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Lista_Discussao.class
 br\com\utfpr\ajudanovatos\beans\Logotipo.class
+br\com\utfpr\ajudanovatos\dao\DaoBasic.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Comentario.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Configurar_Workspace_.class
 br\com\utfpr\ajudanovatos\dao\DaoComentario.class
@@ -64,7 +65,6 @@ br\com\utfpr\ajudanovatos\utils\leituraXML\LeituraAtividadeMensalXML.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Projeto.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Requisito.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Projeto_.class
-br\com\utfpr\ajudanovatos\dao\Dao_Basic.class
 br\com\utfpr\ajudanovatos\beans\ProjetoBean.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Licenca.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Requisito_.class
@@ -81,4 +81,3 @@ br\com\utfpr\ajudanovatos\entidades\projeto\Configurar_Workspace.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Entendendo_Codigo.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Como_Iniciar.class
 br\com\utfpr\ajudanovatos\entidades\projeto\Comunicacao_.class
-br\com\utfpr\ajudanovatos\dao\DaoEstatisticasOpenHub.class

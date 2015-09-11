@@ -12,13 +12,13 @@
     <p>${projeto.comoIniciar.tarefaFacil.texto}</p>
 </div>
 <!--feed area -->
-<div class="grid fluid">
+<div class="grid">
     <c:set var="total_feeds" value="${projeto.comoIniciar.tarefaFacil.feeds.size()}"/>
     <c:forEach var="feed" items="${projeto.comoIniciar.tarefaFacil.feeds}" varStatus="fds">
         <c:if test="${(fds.count-1)==0 || (fds.count-1)%2==0}">
-            <div class="row">
+            <div class="row cells2">
             </c:if>
-            <div class="span6">
+            <div class="cell">
                 <script type="text/javascript">
                     document.write('\x3Cscript type="text/javascript" src="' + ('https:' === document.location.protocol ? 'https://' : 'http://') + 'feed.mikle.com/js/rssmikle.js">\x3C/script>');</script>
                 <script type="text/javascript">

@@ -22,11 +22,13 @@
                         <a href="" class="dropdown-toggle">${t["menu.sub.linguagem"]}</a>
                         <ul class="d-menu" data-role="dropdown">
                             <c:forEach items="${informacoesProjetos.linguagens}" var="linguagem">
-                                <li>
-                                    <a href='<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>' >
-                                        <c:out value="${linguagem}"/>
-                                    </a>
-                                </li>
+                                <c:if test="${!linguagem.contains('Other')}">  
+                                    <li>
+                                        <a href='<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>' >
+                                            <c:out value="${linguagem}"/>
+                                        </a>
+                                    </li>
+                                </c:if>
                             </c:forEach>
                         </ul>
                     </li>
@@ -40,7 +42,7 @@
                 <div class="input-control text">
                     <form action="<c:url value='${t["url.nome.projeto"]}'/>" method="get">
                         <select id="select" style="min-width: 300px;" name="projeto">
-                            <option value="">Selecione um projeto</option>
+                            <option value="">-</option>
                             <c:forEach var="nome" items="${informacoesProjetos.nomes}">
                                 <option>${nome}</option>
                             </c:forEach>
@@ -51,7 +53,7 @@
         </ul>
         <span class="app-bar-divider"></span>
         <ul class="app-bar-menu bg-red">
-            <li class="autenticar"><span style="font-size: 1.2rem;" class="text-shadow text-bold metro-title">${t["btn.novo.projeto"]}</span></li>
+            <li id="btn_novoProjeto"><span style="font-size: 1.2rem;" class="text-shadow text-bold metro-title">${t["btn.novo.projeto"]}</span></li>
         </ul>
         <span class="app-bar-divider"></span>
         <c:choose>
@@ -61,7 +63,7 @@
                         <a class=" fg-white" href=""><span class="mif-enter"> </span> Enter</a>
                     </div>
                     <div class="app-bar-drop-container bg-white fg-dark place-right" data-role="dropdown" data-no-close="true" id="form-top" style="width: 350px">
-                        <div class="padding10">
+                        <div class="padding10 form-login-container">
                             <c:import url="../componentes/formLogin.jsp"/>
                             <span class="opcao" hidden>menu</span>
                         </div>
@@ -81,7 +83,7 @@
                         <li><a href="<c:url value="${t['url.perfil.usuario']}"/>" >Meus Dados</a></li>
                         <li><a href="<c:url value="${t['url.projetos.usuario']}"/>" >Meus Projetos</a></li>
                         <li class="divider"></li>
-                        <li><a href="<c:url value="/logout"/>" ><i class="icon-exit"></i> Logout</a></li>
+                        <li><a href="<c:url value="/logout"/>" ><span class="mif-exit"></span> Logout</a></li>
                     </ul>
                 </div>
             </c:otherwise>
@@ -89,29 +91,36 @@
     </div>
 </div>
 <!-- dialog para login -->
-<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog_form_login" style="display: none">
+<div data-role="dialog" class="padding20 form-login-container" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog_form_login" style="display: none">
     <c:import url="../componentes/formLogin.jsp"/>
     <span class="opcao" hidden>dialog</span>
 </div>
+    
 <!-- dialog de comentario -->
 <div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog2" style="display: none;">
     <c:import url="../componentes/comentario.jsp"/>
 </div>
 <!-- dialog de para buscar dados no openhub -->
-<div data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" id="dialog_buscar_open_hub" style="display: none;">
+<!--
+<div id="dialog_buscar_open_hub" data-role="dialog" class="padding20" data-width="500px" data-close-button="true" data-overlay="true" data-overlay-color="op-dark" style="display: none;">
     <label class="text-bold">Nome do Projeto</label>
     <p>Se você possui um projeto cadastrado no <a href="https://www.openhub.net/" target="_blank">BlackDyck|OpenHub</a> nós podemos encontrar algumas informações importantes sobre o seu projeto.</p>
-    <form action="<c:url value="/buscarDadosProjeto"/>" method="get">
+
+    <form id="formNomeProjeto" action="c:url value="/buscarDadosProjeto"/>" method="get" >
         <div class="input-control text full-size" data-role="input">
             <input id="nome" name="nome" type="text"/>
             <button class="button helper-button clear"><span class="mif-cross"></span></button>
         </div>
-        <input type="button" value="Buscar" id="verificar" class="success"/>
+        <input type="button" value="Buscar" id="submitFormNomeProjeto" class="success"/>
         <input type="button" value="Não possuo Projeto no OpenHub." id="nao_possue_projeto" class="warning"/>
     </form>
+    <div data-role="preloader" data-type="metro" data-style="dark" hidden="true" id="preload"></div>
 </div>
+-->
 <form method="get" action="<c:url value="${t['url.novo.projeto']}"/>" id="formulario1"></form>
 <form method="get" action="<c:url value="${t['url.home']}"/>" id="formulario2"></form>
+<form method="get" action="<c:url value="/carregarDados"/>" id="form_carregarBuscarDados"></form>
+
 <script>
     $(function () {
         $("#nao_possue_projeto").on("click", function () {
@@ -134,66 +143,21 @@
             $("#form-top").toggle();
         });
 
-        $(".autenticar").on("click", function () {
-            console.log("autenticar");
+        $("#btn_novoProjeto").on("click", function () {
             $.ajax({
                 type: "get",
                 url: "/AjudaNovatos/isLogado"
             }).done(function (data) {
                 if (data.logado) {
-                    console.log("logado");
-                    //$("#formulario1").submit();
-                    showDialog("#dialog_buscar_open_hub");
+                    $("#form_carregarBuscarDados").submit();
+                    //showDialog("#dialog_buscar_open_hub");
                 } else {
-                    console.log("nao logado");
                     $(".msg-erros").empty();
                     showDialog("#dialog_form_login");
                 }
             });
         });
 
-        $(".form-autenticacao").on("submit", function (event) {
-            var form = $(this);
-            if (form.find(".a").val() !== "" && form.find(".b").val() !== "") {
-                event.preventDefault();
-                $.ajax({
-                    type: "post",
-                    url: "/AjudaNovatos/login",
-                    data: form.serialize()
-                }).done(function (data) {
-                    if (data.list[0]) {
-                        // $(form).closest("div").find(".opcao").text() === "dialog" ? $("#formulario1").submit() : location.reload();
-                        $("#dialog_form_login").hide();
-                        //showDialog("#dialog_buscar_open_hub");
-                        window.location.reload();
-                    } else {
-                        var s = $(form).find(".msg-erros");
-                        s.empty();
-                        s.show();
-                        s.append(data.list[1]);
-                    }
-                });
-            }
-        });
-
-        $("#verificar").on("click", function () {
-            var form = $(this).closest("form");
-            var nome = form.find("#nome").val();
-            if (nome !== "") {
-                $.ajax({
-                    type: "get",
-                    url: "/AjudaNovatos/ifProjetoExiste.json?nome=" + nome
-                }).done(function (data) {
-                    if (data.existe) {
-                        alert("Já existe um projeto cadastrado com esse nome.");
-                    } else {
-                        form.submit();
-                    }
-                });
-            } else {
-                alert("Informe o nome!");
-            }
-        });
     });
 
     function showDialog(id) {

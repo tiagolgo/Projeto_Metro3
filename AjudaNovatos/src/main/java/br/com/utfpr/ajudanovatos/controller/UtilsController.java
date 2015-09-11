@@ -68,7 +68,7 @@ public class UtilsController {
             this.result.notFound();
         }
     }
-    
+
     @Get("/removeLink")
     public void removeLink(Long id){
         if (this.dao.deletePorId("link", id)) {
@@ -105,41 +105,37 @@ public class UtilsController {
 
     @Path("/enviarEmail")
     public void enviarMail(){
-
     }
 
     @Path("/buscarDadosProjeto")
     public void buscarDadosOpenHub(String nome) throws SAXException, IOException, ParserConfigurationException{
-        if (!this.dao.seProjetoExiste(nome)) {
+        try {
             SAXParser parser = SAXParserFactory.newInstance().newSAXParser();
-            parserDadosProjeto(parser, nome);
-            parserAtividadeMensal(parser, nome);
-            parserDadosContribuintes(parser, nome);
+            String nomeMin = nome.toLowerCase();
+            parserDadosProjeto(parser, nomeMin);
+            parserAtividadeMensal(parser, nomeMin);
+           // parserDadosContribuintes(parser, nomeMin);
 
             this.result.include("projeto", this.projeto);
+            this.result.forwardTo(ProjetoController.class).formulario();
+        } catch (Exception e) {
+            String msg = "Ocorreu um erro ao tentar carregar dados.<br/>Pode ser que o nome do projeto não esteja igual ao do OpenHub.<br/>O nome informado foi: "+nome;
+            this.result.include("err", msg);
+            this.result.forwardTo(ProjetoController.class).carregarDadosOpenHub();
         }
-        
-        this.result.forwardTo(ProjetoController.class).formulario();
     }
-    
 
     private void parserDadosProjeto(SAXParser parser, String nome) throws SAXException, IOException{
-        System.out.println("parseando projeto "+nome);
-        //https://www.openhub.net/projects/aamarok.xml?api_key=5nwDvVbQdNfhMaFCkjMPyw
-        //File f0 = new File("C:\\Projeto_Metro3\\AjudaNovatos\\src\\main\\java\\br\\com\\utfpr\\ajudanovatos\\controller\\projeto.xml");
-        InputStream is = new URL("https://www.openhub.net/projects/"+nome.toLowerCase()+".xml?api_key=5nwDvVbQdNfhMaFCkjMPyw").openStream();
+        InputStream is = new URL("https://www.openhub.net/projects/"+nome+".xml?api_key=c297cd3c8b637249f380c520ac861245a4c7eb03c2b8f423b281918cbe2723ae").openStream();
         LeituraProjetoXML lp = new LeituraProjetoXML();
         lp.setEstatisticas(estatisticasOpenHub);
         lp.setProjeto(projeto);
         parser.parse(is, lp);
         is.close();
-
     }
 
     private void parserAtividadeMensal(SAXParser parser, String nome) throws SAXException, IOException{
-        //https://www.openhub.net/projects/amarok/analyses/latest/activity_facts.xml?api_key=5nwDvVbQdNfhMaFCkjMPyw
-        //File f2 = new File("C:\\Projeto_Metro3\\AjudaNovatos\\src\\main\\java\\br\\com\\utfpr\\ajudanovatos\\controller\\activity_facts.xml");
-        InputStream is = new URL("https://www.openhub.net/projects/"+nome.toLowerCase()+"/analyses/latest/activity_facts.xml?api_key=5nwDvVbQdNfhMaFCkjMPyw").openStream();
+        InputStream is = new URL("https://www.openhub.net/projects/"+nome+"/analyses/latest/activity_facts.xml?api_key=c297cd3c8b637249f380c520ac861245a4c7eb03c2b8f423b281918cbe2723ae").openStream();
         LeituraAtividadeMensalXML la = new LeituraAtividadeMensalXML();
         la.setEstatisticas(estatisticasOpenHub);
         parser.parse(is, la);
@@ -147,13 +143,18 @@ public class UtilsController {
     }
 
     private void parserDadosContribuintes(SAXParser parser, String nome) throws SAXException, IOException{
-        //https://www.openhub.net/projects/amarok/contributors.xml?api_key=5nwDvVbQdNfhMaFCkjMPyw
-        //File f1 = new File("C:\\Projeto_Metro3\\AjudaNovatos\\src\\main\\java\\br\\com\\utfpr\\ajudanovatos\\controller\\contributors.xml");
-        InputStream is = new URL("https://www.openhub.net/projects/"+nome.toLowerCase()+"/contributors.xml?api_key=5nwDvVbQdNfhMaFCkjMPyw").openStream();
+        InputStream is = new URL("https://www.openhub.net/projects/"+nome+"/contributors.xml?api_key=c297cd3c8b637249f380c520ac861245a4c7eb03c2b8f423b281918cbe2723ae").openStream();
         LeituraContribuintesXML lc = new LeituraContribuintesXML();
         lc.setEstatisticas(estatisticasOpenHub);
         parser.parse(is, lc);
         is.close();
     }
-
+    /*
+     private void parserDados(SAXParser parser, InputStream stream) throws SAXException, IOException{
+     LeituraContribuintesXML lc = new LeituraContribuintesXML();
+     lc.setEstatisticas(estatisticasOpenHub);
+     parser.parse(stream, lc);
+     stream.close();
+     }
+     */
 }

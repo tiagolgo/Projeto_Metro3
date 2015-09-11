@@ -6,17 +6,15 @@
 package br.com.utfpr.ajudanovatos.entidades.projeto;
 
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Tiago Luiz Gomes
  */
-@Entity
-@Table(name = "nivelatividade")
+//@Entity
+//@Table(name = "nivelatividade")
 public class NivelAtividade implements Serializable {
 
     @Id

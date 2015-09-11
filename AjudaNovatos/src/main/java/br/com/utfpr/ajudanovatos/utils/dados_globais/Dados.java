@@ -32,9 +32,6 @@ public class Dados {
 
     public void setNomes(List<Object> nomes){
         this.nomes = nomes;
-        for(Object p:this.nomes){
-            System.out.println("Nome "+p.toString());
-        }
     }
 
     public List getLinguagens(){

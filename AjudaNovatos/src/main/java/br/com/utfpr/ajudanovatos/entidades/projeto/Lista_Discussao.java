@@ -30,7 +30,8 @@ public class Lista_Discussao implements Serializable {
     private long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String subscricao, informacao;
-    @OneToMany(targetEntity = Comentario.class,cascade = CascadeType.REMOVE,orphanRemoval = true)
+    private String link;
+    @OneToMany(targetEntity = Comentario.class, cascade = CascadeType.REMOVE, orphanRemoval = true)
     @JoinColumn(name = "lista", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();
 
@@ -64,6 +65,14 @@ public class Lista_Discussao implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios){
         this.comentarios = comentarios;
+    }
+
+    public String getLink(){
+        return link;
+    }
+
+    public void setLink(String link){
+        this.link = link;
     }
 
 }

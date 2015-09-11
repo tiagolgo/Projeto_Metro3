@@ -17,11 +17,11 @@
         <c:import url="../componentes/header.jsp"/>
         <div class="container">
             <c:import url="../componentes/internacionalizacao.jsp"/>
-            <center>
+            <div style="padding-left: 120px;padding-right: 120px">
                 <div class="panel" style="margin-top: 5%; text-align: left">
-                    <div class="heading bg-darkOrange fg-white">
-                        <span class="title">${t["cadastro.div.titulo"]}</span>
-                    </div>
+                    
+                        <h1>${t["cadastro.div.titulo"]}</h1>
+                    
                     <div class="content padding10">
                         <c:if test="${errors!=null}">
                             <div class="fg-red padding5 ">
@@ -93,50 +93,50 @@
                         </form>
                     </div>
                 </div>
-            </center>
+            </div>
         </div>
         <script type="text/javascript">
             $(function () {
-               /* $('#salvarUser').on('click', function () {
-                    var nome = $('#nome').val();
-                    var login = $('#login').val();
-                    var email = $('#email').val();
-                    var senha = $('#senha').val();
-                    var verificacaoSenha = $('#verificacaoSenha').val();
-                    var submitForm = true;
-                    if (nome === '') {
-                        $('#nome').parent(".input-control").addClass("error-state");
-                        submitForm = false;
-                    }
-                    if (login === '') {
-                        $('#login').parent(".input-control").addClass("error-state");
-                        submitForm = false;
-                    }
-                    if (email === '') {
-                        $('#email').parent(".input-control").addClass("error-state");
-                        submitForm = false;
-                    }
-                    if (verificacaoSenha === '') {
-                        $('#verificacaoSenha').parent(".input-control").addClass("error-state");
-                        submitForm = false;
-                    }
-                    if (senha === '') {
-                        $('#senha').parent(".input-control").addClass("error-state");
-                        submitForm = false;
-                    } else {
-                        if (senha != verificacaoSenha) {
-                            $('#verificacaoSenha').parent(".input-control").addClass("error-state");
-                            submitForm = false;
-                        }
-                    }
-                    if (submitForm) {
-                        $("#form-novo-usuario").submit();
-                    }
-                });
-                //REMOVER ALERTAS DE ERRO
-                $('#nome, #login, #email, #senha, #verificacaoSenha').focusin(function () {
-                    $(this).parent(".input-control").removeClass('error-state');
-                });*/
+            /* $('#salvarUser').on('click', function () {
+             var nome = $('#nome').val();
+             var login = $('#login').val();
+             var email = $('#email').val();
+             var senha = $('#senha').val();
+             var verificacaoSenha = $('#verificacaoSenha').val();
+             var submitForm = true;
+             if (nome === '') {
+             $('#nome').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             }
+             if (login === '') {
+             $('#login').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             }
+             if (email === '') {
+             $('#email').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             }
+             if (verificacaoSenha === '') {
+             $('#verificacaoSenha').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             }
+             if (senha === '') {
+             $('#senha').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             } else {
+             if (senha != verificacaoSenha) {
+             $('#verificacaoSenha').parent(".input-control").addClass("error-state");
+             submitForm = false;
+             }
+             }
+             if (submitForm) {
+             $("#form-novo-usuario").submit();
+             }
+             });
+             //REMOVER ALERTAS DE ERRO
+             $('#nome, #login, #email, #senha, #verificacaoSenha').focusin(function () {
+             $(this).parent(".input-control").removeClass('error-state');
+             });*/
             });
         </script>
     </body>

@@ -1,7 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <input type="hidden" name="projeto.comunicacao.id" value="${projeto.comunicacao.id}"/>
-<p>Esta parte destina-se a apresentar ao novato os canais de comunicação que são utilizados pelo projeto.</p>
 <div class="grid fluid">
     <input type="hidden" name="projeto.comunicacao.pesquisa.id" value="${projeto.comunicacao.pesquisa.id}"/>
     <!-- canal de comunicação IRC -->
@@ -46,7 +45,7 @@
     <div id="rowLista" style="display: none">
         <label>Informe o link para lista de discussão.</label>
         <div class="input-control text full-size">
-            <input id="dados-dono" name="" type="text" placeholder="Link para lista de discussão"/>
+            <input id="dados-dono" name="projeto.comunicacao.lista.link" type="text" placeholder="Link para lista de discussão"/>
             <button class="button helper-button clear"><span class="mif-cross"></span></button>
         </div>
         <p>Como é realizada a subscrição na Lista de Discussão.</p>

@@ -7,16 +7,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<h4 class="fg-darkBlue">${t["tab.lista.titulo1"]} <span class="fg-green rating_nota place-right"></span></h4>
+<!--
+<h4 class="fg-darkBlue">{t["tab.lista.titulo1"]} <span class="fg-green rating_nota place-right"></span></h4>
 <p>Link: <a href="#" target="_blank">link lista</a></p>
-<h4 class="fg-darkBlue">${t["tab.lista.titulo2"]}</h4>
-<p>
-    ${projeto.comunicacao.lista.subscricao}
-</p>
-<h4 class="fg-darkBlue">${t["tab.lista.titulo3"]}</h4>
-<p>
-    ${projeto.comunicacao.lista.informacao}
-</p>
+-->
+<div class="grid">
+    <div class="row cells2">
+        <div class="cell">
+            <h4 class="fg-darkBlue">${t["tab.lista.titulo2"]}</h4>
+            <p>
+                ${projeto.comunicacao.lista.subscricao}
+            </p>       
+        </div>
+        <div class="cell">
+            <h4 class="fg-darkBlue">${t["tab.lista.titulo3"]}</h4>
+            <p>
+                ${projeto.comunicacao.lista.informacao}
+            </p>        
+        </div>
+    </div>
+</div>
 
 <!-- Área de Comentários -->
 <div class="row coment-area" style="margin-top: 100px">

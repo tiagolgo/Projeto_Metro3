@@ -3,10 +3,8 @@
     Created on : 03/10/2014, 01:47:47
     Author     : Tiago Luiz Gomes
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +62,14 @@
 
                     <!-- REQUISITOS -->
                     <div class="frame bg-white" id="tab_2">
-                        <c:import url="../componentes/projeto_show/requisitos.jsp"/>
+                        <c:choose>
+                            <c:when test="${projeto.requisito.requisitosBasico!=null and projeto.requisito.requisitosAdicionais!=null}">
+                                <c:import url="../componentes/projeto_show/requisitos.jsp"/>
+                            </c:when>
+                            <c:otherwise>
+                                <h5>Este projeto nao possui...</h5>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
 
                     <!-- COMO INICIAR -->
@@ -125,6 +130,5 @@
             });
         </script>
         <script src="/AjudaNovatos/js/projeto-form.js"></script>
-
     </body>
 </html>

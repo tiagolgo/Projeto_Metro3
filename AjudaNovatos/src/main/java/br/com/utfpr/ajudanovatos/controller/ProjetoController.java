@@ -69,7 +69,7 @@ public class ProjetoController {
     public void salvar(Projeto projeto, Logotipo logo){
         projeto.setAtividade_mensal(this.estatisticas.getAtividade_mensal());
         projeto.setContribuintes(this.estatisticas.getContribuintes());
-        projeto.setNivel_de_atividade(this.estatisticas.getNivel_de_atividade());
+//        projeto.setNivel_de_atividade(this.estatisticas.getNivel_de_atividade());
         projeto.setTotal_code_lines(this.estatisticas.getTotal_code_lines());
         projeto.setTotal_commit_count(this.estatisticas.getTotal_commit_count());
         projeto.setTotal_contributor_count(this.estatisticas.getTotal_contributor_count());
@@ -78,10 +78,8 @@ public class ProjetoController {
 
         projeto.setUsuario(this.usuario.getId());
         if (projeto.getId()==null) {
-            System.out.println("persistir");
             this.dao.persiste(projeto);
         } else {
-            System.out.println("atualizar");
             this.dao.atualiza(projeto);
         }
         this.validator.onErrorUse(Results.page()).of(ProjetoController.class).formulario();
@@ -102,6 +100,14 @@ public class ProjetoController {
     @Get(value = {"pt/editar/projeto", "en/edit/project"})
     public void alterar(Long id){
         Projeto p = this.dao.getPorId(id);
+        this.estatisticas.setAtividade_mensal(p.getAtividade_mensal());
+        this.estatisticas.setContribuintes(p.getContribuintes());
+        this.estatisticas.setMain_language_name(p.getMain_language_name());
+        //this.estatisticas.setNivel_de_atividade(p.getNivel_de_atividade());
+        this.estatisticas.setTotal_code_lines(p.getTotal_code_lines());
+        this.estatisticas.setTotal_commit_count(p.getTotal_commit_count());
+        this.estatisticas.setTotal_contributor_count(p.getTotal_contributor_count());
+        this.estatisticas.setUser_count(p.getUser_count());
         this.result.include("projeto", p);
         this.result.of(this).formulario();
     }
@@ -134,15 +140,13 @@ public class ProjetoController {
 
     @Get("/paginacao.json")
     public void paginacao(){
-        List list = this.dao.getPaginacao(1, 10, false);
-        this.result.use(json()).from(list).serialize();
+        this.result.use(json()).from(this.dao.getPaginacao(1, 10, false)).serialize();
     }
 
     @Get("/projetos.json")
     public void listProjetosJson(String trecho){
         if (trecho!=null) {
-            List list = this.dao.pesquisarTrechoJson(trecho);
-            this.result.use(json()).from(list).serialize();
+            this.result.use(json()).from(this.dao.pesquisarTrechoJson(trecho)).serialize();
         }
     }
 
@@ -152,7 +156,9 @@ public class ProjetoController {
 
     @Get("/ifProjetoExiste.json")
     public void projetoExisteJson(String nome){
-        boolean existe = this.dao.seProjetoExiste(nome);
-        this.result.use(json()).from(existe, "existe").serialize();
+        this.result.use(json()).from(this.dao.seProjetoExiste(nome), "existe").serialize();
     }
+    
+    @Get("/carregarDados")
+    public void carregarDadosOpenHub(){}
 }

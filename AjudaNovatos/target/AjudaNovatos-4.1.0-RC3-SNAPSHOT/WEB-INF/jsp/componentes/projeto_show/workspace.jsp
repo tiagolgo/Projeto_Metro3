@@ -14,14 +14,14 @@
             ${projeto.configurarWorkspace.texto}
         </div>
         <div class="cell">
-            <h4 class="fg-darkBlue">${t["tab.workspace.titulo3"]}</h4>
+            <!--<h4 class="fg-darkBlue">{t["tab.workspace.titulo3"]}</h4>-->
             <p>Perguntar se o projeto possui endereço do histórico de arquivos da lista de email </p>
             <!-- SiteSearch Google -->
             <p>Buscar uma solução no Google.</p>
             <form class="google-search">
                 <div class="input-control text full-size">
-                    <input type="hidden" id="url" value=""/>
-                    <input type="text" placeholder="Buscar no Google"/>
+                    <input type="hidden" id="url" value="${projeto.comunicacao.lista.link}"/>
+                    <input type="text" class="text-busca" placeholder="Buscar no Google"/>
                     <button type="submit" class="button"><span class="mif-search"></span></button>
                 </div>
             </form>

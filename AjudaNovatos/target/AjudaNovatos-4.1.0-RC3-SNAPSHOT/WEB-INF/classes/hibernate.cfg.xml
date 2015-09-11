@@ -38,7 +38,7 @@
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Contribuinte"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Licenca"/>
         <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.Link"/>
-        <mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.NivelAtividade"/>
+        <!--<mapping class="br.com.utfpr.ajudanovatos.entidades.projeto.NivelAtividade"/>-->
         
     </session-factory>
 </hibernate-configuration>

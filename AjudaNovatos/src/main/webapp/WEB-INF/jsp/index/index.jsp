@@ -61,11 +61,13 @@
                                     <div class="content bg-white">
                                         <div class="listview">
                                             <c:forEach var="linguagem" items="${informacoesProjetos.linguagens}">
-                                                <a class="list" href="<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>">
-                                                    <img src="" class="list-icon"/>
-                                                    <span class="list-title text-bold"><c:out value="${linguagem}"/></span><br/>
-                                                    <!--<span class="text-light">Utilizada em c:out value="{linguagem.quantidade}"/> projeto(s)</span>-->
-                                                </a>
+                                                <c:if test="${!linguagem.contains('Other')}">
+                                                    <a class="list" href="<c:url value='${t["url.projeto.linguagem"]}?q=${linguagem}'/>">
+                                                        <img src="" class="list-icon"/>
+                                                        <span class="list-title text-bold"><c:out value="${linguagem}"/></span><br/>
+                                                        <!--<span class="text-light">Utilizada em c:out value="{linguagem.quantidade}"/> projeto(s)</span>-->
+                                                    </a>
+                                                </c:if>
                                             </c:forEach>
                                         </div>  
                                     </div>
@@ -93,6 +95,9 @@
                         -->
                     </div>
                 </div>
+            </div>
+            <div class="row bg-red">
+             
             </div>
         </div>         
         <!--

@@ -15,7 +15,7 @@ import org.hibernate.Session;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoComentario extends Dao_Basic<Comentario> {
+public class DaoComentario extends DaoBasic<Comentario> {
 
     @Inject
     public DaoComentario(Session sessao) {

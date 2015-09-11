@@ -30,6 +30,7 @@ public class Encontrar_Mentor implements Serializable {
     private Long id;
     @Column(columnDefinition = "MEDIUMTEXT")
     private String texto;
+    
     @OneToMany(targetEntity = Comentario.class,cascade = CascadeType.REMOVE,orphanRemoval = true)
     @JoinColumn(name = "mentor", updatable = false)
     private List<Comentario> comentarios = new ArrayList<>();

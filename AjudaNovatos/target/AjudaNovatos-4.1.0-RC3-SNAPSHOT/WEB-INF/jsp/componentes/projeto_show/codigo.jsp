@@ -15,7 +15,7 @@
             ${projeto.entendendoCodigo.documentacao}
         </div>
         <div class="cell">
-            <h4 class="fg-darkBlue">${t["tab.entender.titulo3"]}</h4>
+            <!--<h4 class="fg-darkBlue">{t["tab.entender.titulo3"]}</h4>-->
         </div>
     </div>
 </div>

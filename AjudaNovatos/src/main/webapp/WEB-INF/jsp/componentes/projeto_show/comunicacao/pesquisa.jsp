@@ -18,21 +18,23 @@
             <p>Buscar uma solução no Google.</p>
             <form class="google-search">
                 <div class="input-control text full-size">
-                    <input type="hidden" id="url" value=""/>
-                    <input type="text" placeholder="Buscar no Google"/>
-                    <button type="submit" class=" button "><span class="mif-search"></span></button>
+                    <input type="hidden" id="url" value="${projeto.comunicacao.lista.link}"/>
+                    <input type="text" class="text-busca" placeholder="Buscar no Google"/>
+                    <button type="submit" class="button"><span class="mif-search"></span></button>
                 </div>
             </form>
         </div>
 
         <div class="cell">
-            <h4 class="fg-darkBlue">${t["tab.pesquisa.titulo3"]}</h4>
+            <!--
+            <h4 class="fg-darkBlue">    {t["tab.pesquisa.titulo3"]}</h4>
             <p>
                 Veja outros documentos disponibilizados pelo projeto:
             </p>
             <div class="button-dropdown">
                 <button class="link">Link</button>
             </div>
+            -->
         </div>
     </div>
 </div>

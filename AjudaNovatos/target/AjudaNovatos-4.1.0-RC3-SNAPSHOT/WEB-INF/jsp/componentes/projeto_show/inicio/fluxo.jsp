@@ -1,54 +1,86 @@
 <%-- 
-    Document   : fluxo
-    Created on : 01/06/2015, 09:21:45
-    Author     : Tiago Luiz Gomes
+Document   : fluxo
+Created on : 01/06/2015, 09:21:45
+Author     : Tiago Luiz Gomes
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<style>
+    .fluxo-tile{        
+        padding: 5%;
+        margin: 2%;
+        border-radius: 5px;
+        text-align: center;
+        background-color: #ce352c;
+        color:#eeeeee;
+    }
+    .fluxo-tile:hover{
+        cursor: pointer;
+        background-color: #eeeeee;
+        color: #ce352c;
+        border:2px solid #ce352c;
+    }
+    .flecha{       
+        border-bottom:10px solid transparent;  /* izquierda flecha */
+        border-top:10px solid transparent; /* derecha flecha */
+        border-left:5px solid lightgray; /* base flecha y color*/
+        float: right;
+    }
+    .suporte-div{
+        padding: 1%;
+        text-align: center;
+        background-color: #008a00;
+        border:2px solid lightgray;
+    }
+    .suporte-div:hover{
+        background-color: #eeeeee;
+        color: #008a00;
+        border:2px solid #008a00;
+        cursor: pointer;
+    }
 
+</style>
 <h3 class="fg-darkBlue">${t["fluxo.titulo"]} <span class="fg-green rating_nota"></span></h3>
 <p>${projeto.comoIniciar.fluxo.texto}</p>
-<div class="grid fluid text-left ">
-    <div class="row">
-        <div class="span2 offset0">
-            <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 20px;padding-bottom: 5px">${t["fluxo.habilidades"]}</a>
+<div class="grid">
+    <div class="row cells3">
+        <div class="cell">
+            <div class="fluxo-tile" onclick="ativaAba('#tab2')" >
+                1. ${t["fluxo.habilidades"]}<span class="flecha"></span>
+            </div>
+        </div>
+        <div class="cell">
+            <div class="fluxo-tile" onclick="ativaAba('#tab5')">
+                2. ${t["fluxo.workspace"]}<span class="flecha"></span>
+            </div>
+        </div>
+        <div class="cell">
+             <div class="fluxo-tile" onclick="ativaAba('#tab_tarefaFacil')">
+                3. ${t["fluxo.tarefa"]}<span class="flecha"></span>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="span3 offset1">
-            <a href="#" onclick="ativaAba('#tab5')" style="width: 100%;height: 20px;padding-bottom: 5px">${t["fluxo.workspace"]}</a>
+    <div class="row cells2">
+        <div class="cell">
+            <div class="fluxo-tile" onclick="ativaAba('#tab6')">
+                4. ${t["fluxo.codigo"]}<span class="flecha"></span>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="span4 offset2">
-            <a href="#" onclick="ativaAba('#tab6')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.codigo"]}</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span5 offset3">
-            <a href="#" onclick="ativaAba('#tab2')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.requisito"]}</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span6 offset4 ">
-            <a href="#" onclick="ativaAba('#tab_tarefaFacil')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.tarefa"]}</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span7 offset5">
-            <a href="#" onclick="ativaAba('#tab7')" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.contribuicao"]}</a>
-        </div>
-    </div>
-    <div class="row text-center">
-        <div class="span12">
-            <a href="#" onclick="ativaAba('#tab4')" class="tile bg-lightGreen fg-white" style="width: 100%;height: 100%;padding: 5px">${t["fluxo.suporte"]}</a>
+        <div class="cell">
+            <div class="fluxo-tile" onclick="ativaAba('#tab7')">
+                5. ${t["fluxo.contribuicao"]}<span class="flecha"></span>
+            </div>
         </div>
     </div>
 </div>
-        
+
+<div class="row suporte-div" style="border-radius: 5px" onclick="ativaAba('#tab4')">
+    ${t["fluxo.suporte"]}
+</div>
+
 <!-- Área de Comentários -->
-<div class="row coment-area" style="margin-top: 100px">
+<div class="row area">
     <h5 class="padding10" style="border-bottom: 2px solid lightgray">Comentarios
         <c:if test="${userLogado.logado==true}">
             <span class="element place-right"><a href="#" onclick="exibirFormComentario(${projeto.comoIniciar.fluxo.id}, 'fluxo', this);"><i class="icon-plus"> </i> Novo</a></span>

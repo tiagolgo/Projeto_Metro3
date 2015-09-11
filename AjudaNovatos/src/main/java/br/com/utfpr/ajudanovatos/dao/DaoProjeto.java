@@ -25,7 +25,7 @@ import org.hibernate.transform.Transformers;
  *
  * @author Tiago Luiz Gomes
  */
-public class DaoProjeto extends Dao_Basic<Projeto> {
+public class DaoProjeto extends DaoBasic<Projeto> {
 
     @Inject
     public DaoProjeto(Session sessao){

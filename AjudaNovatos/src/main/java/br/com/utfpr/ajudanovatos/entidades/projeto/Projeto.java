@@ -44,8 +44,8 @@ public class Projeto implements Serializable {
     @JoinColumn(name = "projeto")
     private List<AtividadeMensal> atividade_mensal = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    private NivelAtividade nivel_de_atividade;
+    //@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    //private NivelAtividade nivel_de_atividade;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "projeto")
@@ -338,14 +338,14 @@ public class Projeto implements Serializable {
     public void setAtividade_mensal(List<AtividadeMensal> atividade_mensal){
         this.atividade_mensal = atividade_mensal;
     }
-
+/*
     public NivelAtividade getNivel_de_atividade(){
         return nivel_de_atividade;
     }
-
     public void setNivel_de_atividade(NivelAtividade nivel_de_atividade){
         this.nivel_de_atividade = nivel_de_atividade;
     }
+*/
 
     public String dadosContribuintesMensais(){
         StringBuilder sb = new StringBuilder();
